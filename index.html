@@ -172,8 +172,10 @@
                 var img = document.createElement('img')
                 var h3 = document.createElement('h3')
                 a.href = element.url
+                a.target = "_blank"
                 a.className = "work col-sm-6"
                 img.src = element.pic
+
                 h3.innerText = element.title
                 h3.className = "workName"
                 a.appendChild(img)
