@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../b.png">
+    <title>找颜色不同</title>
+    <style>
+        body {
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 1000% 1000%;
+            animation: gradient 15s ease infinite;
+            padding: 100px 30px;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .stage {
+            width: 500px;
+            height: 500px;
+            background-color: black;
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 auto;
+        }
+
+        .stage li {
+            border-radius: 50%;
+            list-style: none;
+        }
+
+        .level {
+            font-size: 70px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="stage"></div>
+    <h1 class="level"></h1>
+
+    <script>
+        var stage = document.querySelector('.stage')
+        var le = document.querySelector('.level')
+
+        var level = 1;
+        function showAround(level) {
+
+            stage.innerHTML = ''
+            le.innerText = level
+
+
+
+            var color = '#' + Math.random().toString(16).slice(-6)
+            console.log(color);
+            for (var i = 0; i < Math.pow(level + 2, 2); i++) {
+                var node = document.createElement('li')
+
+                node.style.width = 500 / (level + 2) + 'px'
+                node.style.backgroundColor = color;
+                stage.appendChild(node)
+            }
+            var index = Math.floor(Math.random() * stage.querySelectorAll('li').length)
+
+            stage.querySelectorAll('li')[index].style.opacity = '0.7'
+            stage.querySelectorAll("li")[index].onclick = function () {
+                level++
+                showAround(level)
+            }
+        }
+
+
+
+        showAround(1)
+    </script>
+
+</body>
+
+</html>

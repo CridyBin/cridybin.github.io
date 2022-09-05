@@ -1,0 +1,78 @@
+.swiper {
+  width: 800px;
+  height: 300px;
+  background-color: lightblue;
+  margin: 0 auto;
+}
+.swiper .main {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.swiper .main a.arrow-l {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  z-index: 9;
+  color: white;
+  left: 8px;
+  text-decoration: none;
+  width: 24px;
+  height: 28px;
+  font-size: 18px;
+  text-align: center;
+  top: 50%;
+  line-height: 24px;
+  background-color: rgba(0, 0, 0, 0.8);
+  transform: translateY(-50%);
+}
+.swiper .main a.arrow-r {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  z-index: 9;
+  color: white;
+  right: 8px;
+  text-decoration: none;
+  width: 24px;
+  height: 28px;
+  font-size: 18px;
+  text-align: center;
+  top: 50%;
+  line-height: 24px;
+  background-color: rgba(0, 0, 0, 0.8);
+  transform: translateY(-50%);
+}
+.swiper .main ul.imgs {
+  width: 700%;
+  display: flex;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.swiper .main ul.imgs li {
+  width: 800px;
+  height: 300px;
+}
+.swiper .main ol.circle {
+  display: flex;
+  position: absolute;
+  left: 50%;
+  z-index: 999;
+  bottom: 10px;
+  width: 90px;
+  justify-content: space-between;
+}
+.swiper .main ol.circle li {
+  list-style: none;
+  width: 10px;
+  height: 10px;
+  cursor: pointer;
+  background-color: white;
+  border-radius: 50%;
+}
+.swiper .main ol.circle li.active {
+  background-color: orange;
+}
+/*# sourceMappingURL=./style.css.map */

@@ -1,0 +1,31 @@
+body {
+  display: flex;
+  justify-content: center;
+}
+.stage {
+  width: 600px;
+  height: 300px;
+  background-color: lightblue;
+  display: flex;
+}
+.stage div {
+  width: 50px;
+  height: 100%;
+  background-size: auto 100%;
+  background-position: top center;
+  transition: all 0.5s;
+}
+.stage div:nth-child(1) {
+  background-image: url("../images/1.jpg");
+  width: 450px;
+}
+.stage div:nth-child(2) {
+  background-image: url("../images/2.jpg");
+}
+.stage div:nth-child(3) {
+  background-image: url("../images/3.jpg");
+}
+.stage div:nth-child(4) {
+  background-image: url("../images/4.jpg");
+}
+/*# sourceMappingURL=./index.css.map */

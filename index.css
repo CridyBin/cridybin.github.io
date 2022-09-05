@@ -1,0 +1,243 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-size: 20px;
+  height: 2000px;
+}
+.sidebar {
+  text-align: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 250px;
+  color: #fff;
+  overflow: hidden;
+  overflow-y: auto;
+  background: #4b4b4b;
+  box-sizing: border-box;
+  padding: 50px 20px;
+}
+.sidebar .img {
+  display: inline-block;
+  box-sizing: border-box;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+}
+.sidebar .img:hover .rotate {
+  transform: rotate(90deg);
+}
+.sidebar .img:hover img {
+  transform: scale(1.2);
+}
+.sidebar .img img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  transition: all 0.5s;
+  transform: scale(1);
+}
+.sidebar .img .rotate {
+  position: absolute;
+  box-sizing: border-box;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9;
+  border-radius: 50%;
+  border-width: 2px;
+  transition: all 0.5s;
+  border-style: solid;
+  border-color: #fff #145ab5;
+  transform: rotate(0deg);
+}
+.sidebar p.name {
+  color: #c0b9b9;
+  margin-top: 5px;
+}
+.sidebar p.name i {
+  color: cornflowerblue;
+}
+.sidebar ul.menu {
+  margin-top: 50px;
+}
+.sidebar ul.menu li {
+  margin-bottom: 10px;
+}
+.sidebar ul.menu li a {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+  color: #fff;
+  transition: all 0.5s;
+}
+.sidebar ul.menu li:hover a {
+  background-color: antiquewhite;
+  color: #000;
+}
+.wrap {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.header {
+  display: none;
+  text-align: center;
+  color: #fff;
+  overflow: hidden;
+  overflow-y: auto;
+  background: #4b4b4b;
+  box-sizing: border-box;
+  padding: 50px 20px;
+}
+.header .img {
+  margin: auto;
+  width: 150px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+}
+.header .img:hover .rotate {
+  transform: rotate(90deg);
+}
+.header .img:hover img {
+  transform: scale(1.2);
+}
+.header .img .rotate {
+  position: absolute;
+  box-sizing: border-box;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9;
+  border-radius: 50%;
+  border-width: 2px;
+  transition: all 0.5s;
+  border-style: solid;
+  border-color: #fff #145ab5;
+  transform: rotate(0deg);
+}
+.header p.name {
+  margin-top: 5px;
+}
+.header p.name i {
+  color: cornflowerblue;
+}
+.header ul.menu {
+  width: 200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+.detail {
+  margin-left: 250px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: left;
+  position: relative;
+}
+.detail .info {
+  width: 100%;
+  background: url(bg-2.png) fixed;
+  padding: 20px 0;
+}
+.detail .info .wrap {
+  padding-left: 30px;
+  box-sizing: border-box;
+}
+.detail .info .wrap .title i {
+  margin-right: 30px;
+  color: chocolate;
+}
+.detail .skills {
+  color: #fff;
+  width: 100%;
+  background-color: #918e8e;
+  padding: 20px 0;
+}
+.detail .skills .wrap {
+  padding-left: 30px;
+  box-sizing: border-box;
+}
+.detail .skills .wrap h2.title i {
+  margin-right: 30px;
+  color: chocolate;
+}
+.detail .skills .wrap ul.tec {
+  margin: 0;
+}
+.detail .skills .wrap ul.tec li {
+  text-align: center;
+  box-sizing: border-box;
+  padding: 0;
+}
+.detail .skills .wrap ul.tec li h1 {
+  font-size: 26px;
+}
+.detail .skills .wrap ul.tec li .img {
+  margin: 0 auto;
+  width: 80px;
+  height: 80px;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.detail .skills .wrap ul.tec li .img:hover i {
+  transform: rotate(360deg);
+}
+.detail .skills .wrap ul.tec li .img i {
+  font-size: 36px;
+  color: orange;
+  transform: rotate(0deg);
+  transition: all 0.5s;
+}
+.detail .skills .wrap ul.tec li .img img {
+  width: 100%;
+  height: 100%;
+}
+.detail .skills .wrap ul.tec li p {
+  text-align: center;
+  word-break: break-all;
+  font-size: 16px;
+}
+.detail .works .wrap {
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+.detail .works .wrap .work {
+  display: block;
+  padding: 0 20px;
+  text-decoration: none;
+  text-align: center;
+  transform: scale(1);
+  transition: all 0.5s;
+  margin: 0;
+}
+.detail .works .wrap .work:hover {
+  transform: scale(1.1);
+  color: orange;
+}
+.detail .works .wrap .work h3 {
+  margin: 0;
+  padding: 10px 0;
+}
+.detail .works .wrap .title i {
+  margin-right: 30px;
+  color: chocolate;
+}
+.detail .works .wrap .col-sm-6 {
+  margin-bottom: 20px;
+}
+/*# sourceMappingURL=./index.css.map */

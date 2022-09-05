@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="../b.png">
+
+    <link rel="stylesheet" href="./style.css">
+    <title>青柠搜索页面</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <i class="fa fa-windows item"></i>
+        <div class="search-box">
+            <input type="text" name="" id="" class="search-btn" placeholder="搜索">
+        </div>
+        <i class="fa fa-search item"></i>
+    </div>
+    <div class="timeBox"></div>
+
+    <!-- <script src=" https://kit.fontawesome.com/f23451c27c.js "></script> -->
+
+
+    <script>
+        var searchBtn = document.querySelector(".search-btn")
+        var style1 = document.createElement("style")
+        // console.log(style1);
+        var searchBox = document.querySelector(".search-box")
+        var timeBox = document.querySelector(".timeBox")
+
+
+        searchBtn.addEventListener("focus", function () {
+            style1.innerHTML = "body::before {filter: blur(20px);transform: scale(1.01);}"
+            document.head.appendChild(style1)
+            searchBox.style.width = "440px"
+        })
+
+        searchBtn.addEventListener("blur", function () {
+            document.head.removeChild(style1)
+            searchBox.style.width = ""
+        })
+
+        setInterval(function () {
+            var date = new Date()
+            let hh = addZero(date.getHours())
+            let mm = addZero(date.getMinutes())
+            let ss = addZero(date.getSeconds())
+            timeBox.innerText = hh + ':' + mm + ':' + ss
+
+        }, 1000)
+
+        function addZero(n) {
+            return n > 9 ? n : '0' + n
+        }
+    </script>
+</body>
+
+</html>

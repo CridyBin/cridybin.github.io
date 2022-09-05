@@ -1,0 +1,93 @@
+.swiper {
+
+    width: 800px;
+    height: 300px;
+    background-color: lightblue;
+    margin: 0 auto;
+
+
+    .main {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        position: relative;
+
+        a.arrow-l {
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            z-index: 9;
+            color: white;
+            left: 8px;
+            text-decoration: none;
+            width: 24px;
+            height: 28px;
+            font-size: 18px;
+            text-align: center;
+            top: 50%;
+            line-height: 24px;
+            background-color: rgba(0, 0, 0, .8);
+            transform: translateY(-50%);
+        }
+
+        a.arrow-r {
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            z-index: 9;
+            color: white;
+            right: 8px;
+            text-decoration: none;
+            width: 24px;
+            height: 28px;
+            font-size: 18px;
+            text-align: center;
+            top: 50%;
+            line-height: 24px;
+            background-color: rgba(0, 0, 0, .8);
+            transform: translateY(-50%);
+        }
+
+        ul.imgs {
+            width: 700%;
+            display: flex;
+            position: absolute;
+            // transition: all 1s;
+
+            left: 0;
+            top: 0;
+
+            li {
+                width: 800px;
+                height: 300px;
+
+                a {}
+            }
+        }
+
+        ol.circle {
+            display: flex;
+            position: absolute;
+            left: 50%;
+            z-index: 999;
+            bottom: 10px;
+            width: 90px;
+            justify-content: space-between;
+
+            li {
+                list-style: none;
+                width: 10px;
+                height: 10px;
+                cursor: pointer;
+
+                background-color: white;
+                border-radius: 50%;
+
+            }
+
+            li.active {
+                background-color: orange;
+            }
+        }
+    }
+}

@@ -1,0 +1,88 @@
+body {
+  height: 100vh;
+  background: linear-gradient(#1d2b48, #4f4266);
+}
+.out {
+  width: 800px;
+  height: 200px;
+  margin: 0 auto;
+  margin-top: 200px;
+  position: relative;
+}
+.out .inner {
+  width: 100%;
+  height: 100%;
+}
+.out .inner .img {
+  width: 400px;
+  height: 200px;
+  position: absolute;
+  transition: 0.5s;
+}
+.out .inner .img img {
+  width: 100%;
+  height: 100%;
+}
+.out .arrow {
+  font-size: 25px;
+}
+.out .arrow i {
+  position: absolute;
+  color: white;
+  z-index: 999;
+  top: 50%;
+  cursor: pointer;
+}
+.out .arrow .left {
+  left: 0;
+  transform: translateY(-50%);
+}
+.out .arrow .right {
+  right: 0;
+  transform: translateY(-50%);
+}
+.out ul.button {
+  width: 175px;
+  height: 17px;
+  position: absolute;
+  z-index: 999;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 5px;
+}
+.out ul.button li {
+  width: 15px;
+  height: 15px;
+  background-color: white;
+  float: left;
+  margin: 0 5px;
+  border-radius: 50%;
+}
+.out ul.button .current {
+  background-color: orange;
+}
+.out #last {
+  transform: translateX(0);
+  z-index: 9;
+  opacity: 1;
+}
+.out #first {
+  transform: translateX(200px) scale(1.2);
+  z-index: 99;
+  opacity: 1;
+}
+.out #second {
+  transform: translateX(400px);
+  z-index: 9;
+  opacity: 1;
+}
+.out #left {
+  transform: translateX(200px);
+  z-index: 1;
+  opacity: 0;
+}
+.out #right {
+  z-index: 1;
+  opacity: 0;
+}
+/*# sourceMappingURL=./index.css.map */

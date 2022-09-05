@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./minireset.css">
+    <link rel="stylesheet" href="./style.css">
+    <title>音乐播放器</title>
+</head>
+
+<body>
+
+    <div class="player">
+        <div class="player_top">
+            <div class="pic">
+            </div>
+            <div class="controls">
+                <div class="heart"><i class="fa fa-heart" aria-hidden="true"></i></div>
+                <div class="share"><i class="fa fa-share-square-o" aria-hidden="true"></i></div>
+                <div class="prev"><i class="fa fa-fast-backward" aria-hidden="true"></i></div>
+                <div class="next"><i class="fa fa-fast-forward" aria-hidden="true"></i></div>
+                <div class="play"><i class="fa fa-play-circle-o" aria-hidden="true"></i> </div>
+            </div>
+        </div>
+        <div class="progress">
+            <h2 class="songName">Norm Ender</h2>
+            <p class="singer">Mekann Sahibi</p>
+            <span class="total">03:09</span>
+            <div class="slider">
+                <div class="slider_bar"></div>
+            </div>
+            <div class="now">00:00</div>
+        </div>
+    </div>
+
+
+    <audio src="./audio/棱镜 - 这是我一生中最勇敢的瞬间.mp3" controls>1231</audio>
+    <script>
+        var tracks = [
+            {
+                name: "好想爱这个世界啊",
+                artist: "华晨宇",
+                cover: "./images/好想爱这个世界啊.jpg",
+                source: "./audio/华晨宇 - 好想爱这个世界啊.mp3",
+                favorited: true
+            },
+            {
+                name: "这是我一生中最勇敢的瞬间",
+                artist: "棱镜乐队",
+                cover: "./images/这是我一生中最勇敢的瞬间.jpg",
+                source: "./audio/棱镜 - 这是我一生中最勇敢的瞬间.mp3",
+                favorited: true
+            },
+            {
+                name: "灰姑娘",
+                artist: "郑钧",
+                cover: "./images/灰姑娘.jpg",
+                source: "./audio/郑钧 - 灰姑娘.mp3",
+                favorited: false
+            },
+            {
+                name: "Promise",
+                artist: "sapientdream",
+                cover: "./images/promise.jpg",
+                source: "./audio/sapientdream - Promise.mp3",
+                favorited: false
+            },
+            {
+                name: "哪里都是你",
+                artist: "罗之豪",
+                cover: "./images/哪里都是你.jpg",
+                source: "./audio/罗之豪 - 哪里都是你.mp3",
+                favorited: false
+            },
+            {
+                name: "亲爱的旅人啊",
+                artist: "周深",
+                cover: "./images/亲爱的旅人啊.jpg",
+                source: "./audio/周深 - 亲爱的旅人啊.mp3",
+                favorited: false
+            },
+            {
+                name: "Hotel California",
+                artist: "Eagles",
+                cover: "./images/加州旅馆.jpg",
+                source: "./audio/Eagles - Hotel California.mp3",
+                favorited: false
+            },
+
+
+        ]
+
+
+        var audio = document.querySelector('audio')
+        var play = document.querySelector('.play')
+        var heart = document.querySelector('.heart')
+        var flag = true
+
+        var prev = document.querySelector('.prev')
+
+        var num = 0
+
+        function change(n) {
+            var songName = document.querySelector('.songName')
+            var singer = document.querySelector('.singer')
+            var pic = document.querySelector('.pic')
+
+            audio.src = tracks[n].source
+            songName.innerText = tracks[n].name
+            singer.innerText = tracks[n].artist
+            pic.style.backgroundImage = 'url(' + tracks[n].cover + ')'
+
+            checkFavorite(n)
+
+        }
+        change(0)
+
+        prev.onclick = function () {
+            num--
+            if (num == -1) {
+                // console.log(num);
+                num = tracks.length - 1
+                change(num)
+            } else {
+                change(num)
+            }
+            // console.log(num);
+
+            flag = true
+            play.click()
+            checkFavorite(num)
+        }
+        var next = document.querySelector('.next')
+        next.onclick = function () {
+            num++
+            if (num >= tracks.length) {
+                // console.log(num);
+                num = 0
+                change(num)
+            } else {
+                change(num)
+            }
+            // console.log(num);
+
+            flag = true
+            play.click()
+            checkFavorite(num)
+        }
+
+        heart.onclick = function () {
+            // console.log("aa");
+            // console.log(num);
+            if (tracks[num].favorited) {
+                tracks[num].favorited = false
+            } else {
+                tracks[num].favorited = true
+            }
+
+            checkFavorite(num)
+        }
+
+
+
+
+        function checkFavorite(n) {
+            // console.log();
+            if (tracks[n].favorited) {
+                heart.style.color = 'red'
+            } else {
+                heart.style.color = '#acb8cc'
+            }
+            console.log(n);
+        }
+
+
+
+        audio.oncanplay = function (e) {
+            // console.log(e);
+            // console.log(e.target.duration);//
+
+            var minute = parseInt(e.target.duration / 60)
+            var seconds = parseInt(e.target.duration % 60) < 10 ? '0' + parseInt(e.target.duration % 60) : parseInt(e.target.duration % 60)
+
+            document.querySelector('.total').innerText = minute + ":" + seconds
+
+            var duration = e.target.duration
+
+
+
+            play.onclick = function () {
+                if (flag) {
+                    this.children[0].classList.remove('fa-play-circle-o')
+                    this.children[0].classList.add('fa-pause-circle-o')
+                    audio.play()
+                    flag = false
+                } else {
+                    this.children[0].classList.remove('fa-pause-circle-o')
+                    this.children[0].classList.add('fa-play-circle-o')
+                    audio.pause()
+                    flag = true
+                }
+            }
+            audio.ontimeupdate = function () {
+                // console.log(audio.currentTime);
+                var slider = document.querySelector('.slider')
+                var slider_bar = slider.offsetWidth * audio.currentTime / duration
+
+                var minute = parseInt(audio.currentTime / 60) < 10 ? '0' + parseInt(audio.currentTime / 60) : parseInt(audio.currentTime / 60)
+                var seconds = parseInt(audio.currentTime % 60) < 10 ? '0' + parseInt(audio.currentTime % 60) : parseInt(audio.currentTime % 60)
+
+
+                document.querySelector('.now').innerText = minute + ':' + seconds
+                document.querySelector('.slider_bar').style.width = slider_bar + 'px'
+            };
+
+
+
+            // 拖动进度条
+            var slider = document.querySelector('.slider')
+            // console.log(audio.currentTime);
+            slider.onmouseenter = function (e) {
+                slider.onmousedown = function (e) {
+                    play.children[0].classList.remove('fa-pause-circle-o')
+                    play.children[0].classList.add('fa-play-circle-o')
+                    // console.log(e.offsetX);
+                    // console.log(e.offsetX / this.offsetWidth * duration)
+                    audio.pause()
+                    audio.currentTime = e.offsetX / this.offsetWidth * duration
+                    slider.onmousemove = function (e) {
+
+                        audio.currentTime = e.offsetX / this.offsetWidth * duration
+                        // console.log("aa");
+                    }
+                    slider.onmouseup = function () {
+                        slider.onmousemove = null
+                        audio.play()
+                        play.children[0].classList.remove('fa-play-circle-o')
+                        play.children[0].classList.add('fa-pause-circle-o')
+                    }
+                    slider.onmouseout = function (e) {
+                        console.log("aa");
+                        slider.onmousemove = null
+                        audio.play()
+                        play.children[0].classList.remove('fa-play-circle-o')
+                        play.children[0].classList.add('fa-pause-circle-o')
+                        slider.onmouseout = null
+                    }
+                }
+            }
+
+
+        }
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

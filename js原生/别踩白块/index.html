@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../b.png">
+    <link rel="stylesheet" href="./style.css">
+    <title>别踩白块</title>
+    <style>
+        body {
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 1000% 1000%;
+            animation: gradient 15s ease infinite;
+            padding: 100px 30px;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .show {
+            width: 500px;
+            height: 800px;
+            background-color: white;
+            margin: 0 auto;
+            position: relative;
+            border: 1px solid black;
+            overflow: hidden;
+        }
+
+        .main {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: white;
+        }
+
+        .main ul {
+            width: 100%;
+            height: 150px;
+            position: absolute;
+            display: flex;
+            /* background-color: pink; */
+            list-style: none;
+            justify-content: space-between;
+
+        }
+
+        .main ul i {
+
+            width: 20%;
+            height: 150px;
+            background-color: white;
+            border: 1px solid gray;
+        }
+
+        .main ul i.chose {
+            background-color: black;
+        }
+
+        .main ul i.red {
+            background-color: red;
+        }
+
+        .main ul i.clicked {
+            background-color: white;
+        }
+
+        .show .cover {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background-color: rgba(0, 0, 0, .5);
+            display: none;
+        }
+
+        .cover .end {
+            cursor: pointer;
+            width: 200px;
+            height: 110px;
+            background-color: white;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 36px;
+            color: black;
+            line-height: 50px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .startCover {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, .5);
+        }
+
+        .start {
+            position: absolute;
+            width: 100%;
+            height: 200px;
+            left: 0;
+            bottom: 0;
+            background-image: url('./jingling.png');
+            background-repeat: no-repeat;
+            background-position: -543px 15px;
+            background-size: 264%;
+            cursor: pointer;
+        }
+
+        .score {
+            position: absolute;
+            width: 100px;
+            height: 50px;
+            z-index: 99;
+            pointer-events: none;
+            /* background-color: pink; */
+            line-height: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: black;
+            text-align: center;
+            font-size: 50px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="show">
+        <div class="score">0</div>
+        <div class="main"></div>
+        <div class="cover">
+            <div class="end">游戏结束<br>
+                重新开始
+            </div>
+
+        </div>
+        <div class="startCover">
+            <div class="start"></div>
+        </div>
+    </div>
+
+    <script>
+
+        var mainEl = document.querySelector('.main')
+        var cover = document.querySelector('.cover')
+
+        var start = document.querySelector(".start")
+
+        var restart = document.querySelector('.end')
+
+        var score = document.querySelector('.score')
+        var n = 0;
+
+        function Square(y) {
+            this.x = Math.floor(Math.random() * 5)
+            this.y = y
+
+
+
+
+
+
+            // 创建节点
+            this.node = document.createElement("ul")
+
+            for (var i = 0; i < 5; i++) {
+                var node = document.createElement('i')
+                this.node.appendChild(node)
+            }
+
+
+            //更新视图
+            this.update()
+
+            //追加到main 
+            mainEl.appendChild(this.node)
+
+            this.node.children[this.x].classList.add('chose')
+
+
+            this.node.children[this.x].addEventListener('click', fn,)
+
+
+            // 给其他白块点击事件 点到变红
+
+            var nodeArr = Array.prototype.slice.call(this.node.children)
+            // console.log(nodeArr);
+
+            nodeArr.forEach(function (dot) {
+                if (!dot.className) {
+                    dot.onmousedown = function () {
+                        this.classList.add('red')
+                        var audioNode = document.createElement('audio')
+                        audioNode.src = './music/sound_1.mp3'
+                        this.appendChild(audioNode)
+                        audioNode.play()
+                    }
+                }
+            })
+
+            var that = this
+            function fn() {
+                // console.log(this.classList);
+
+                // 解决点击后再点击失败 且给块红色
+                if (this.classList.contains('clicked')) {
+                    this.style.backgroundColor = 'red'
+                    var audioNode = document.createElement('audio')
+                    audioNode.src = './music/sound_1.mp3'
+                    this.appendChild(audioNode)
+                    audioNode.play()
+                    fun()
+                } else {
+                    // 可以跨块点击
+                    this.classList.add('clicked')
+                    that.clicked = true
+                    var audioNode = document.createElement('audio')
+                    audioNode.src = './music/sound_17.mp3'
+                    this.appendChild(audioNode)
+                    audioNode.play()
+                    n++
+                    score.innerText = n
+                    // 阻止冒泡
+                    event.stopPropagation();
+                }
+
+            }
+
+        }
+
+        Square.prototype.move = function () {
+            this.y += 0.02
+        }
+
+        Square.prototype.update = function () {
+            // this.node.style.left = this.x * 100 + 'px'
+            this.node.style.top = this.y * 150 + 'px'
+        }
+
+        var dots = []
+        // 初始化 让页面先出现4个
+        function init() {
+            for (var i = 5; i > 0; i--) {
+                var d = new Square(i - 2)
+                dots.push(d)
+            }
+        }
+        init()
+
+        var id;
+        // 进入页面点击开始
+        start.onclick = function () {
+            this.style.display = 'none'
+            this.parentNode.style.display = 'none'
+            id = setInterval(function () {
+                dots.forEach(function (dot) {
+                    dot.move()
+                    dot.update()
+                });
+
+                // 判断最后一个块是否完全出现 然后创一个块
+                if (dots[dots.length - 1].y >= 0) {
+                    var d = new Square(-1)
+                    dots.push(d)
+                }
+
+                // 结束游戏条件
+                // 检查第一个方块
+                var firstUnclick = dots.filter(function (dot) {
+                    return !dot.clicked
+                })[0]
+
+                if (firstUnclick && (firstUnclick.y + 1) * 150 > mainEl.clientHeight) {
+                    fun()
+
+                }
+
+
+                // 删除超出可视区且已点击块
+                var firstClicked = dots.filter(function (dot) {
+                    return dot.clicked
+                })[0]
+                if (firstClicked && firstClicked.y * 150 > mainEl.clientHeight) {
+                    mainEl.removeChild(firstClicked.node)
+                    dots.splice(dots.indexOf(firstClicked), 1)
+                }
+            }, 1000 / 60)
+        }
+
+
+        // 踩到白块失败
+        mainEl.onclick = fun
+
+        function fun() {
+            clearInterval(id)
+            id = null
+            setTimeout(function () {
+                cover.style.display = 'block'
+            }, 500)
+        }
+
+        // 重新开始
+        restart.onclick = function () {
+            location.reload()
+        }
+
+
+
+    </script>
+</body>
+
+</html>

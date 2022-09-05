@@ -1,0 +1,345 @@
+body {
+    width: 100%;
+    height: 100vh;
+    background-color: #dfe7ef;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+audio {
+    display: none;
+}
+
+.player {
+    background: #eef3f7;
+    width: 410px;
+    min-height: 480px;
+    box-shadow: 0px 15px 35px -5px rgb(50 88 130 / 32%);
+    border-radius: 15px;
+    padding: 30px;
+    // overflow: hidden;
+
+    .player_top {
+        width: 350px;
+        height: 355px;
+        display: flex;
+        justify-content: space-between;
+
+        .pic {
+            width: 300px;
+            height: 300px;
+            margin-left: -50px;
+            flex-shrink: 0;
+            position: relative;
+            border-radius: 15px;
+            z-index: 1;
+            // background-image: url("./images/好想爱这个世界啊.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center top;
+            // overflow: hidden;
+
+            &::after {
+                content: "";
+                background-image: inherit;
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                box-shadow: 0px 10px 40px 0px rgb(76 70 124 / 50%);
+                display: block;
+                z-index: 2;
+                border-radius: 15px;
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center top;
+            }
+
+            &::before {
+                content: "";
+                background: inherit;
+                width: 100%;
+                height: 100%;
+                box-shadow: 0px 10px 40px 0px rgb(76 70 124 / 50%);
+                display: block;
+                z-index: 1;
+                position: absolute;
+                top: 30px;
+                transform: scale(0.9);
+                filter: blur(10px);
+                opacity: 0.9;
+                border-radius: 15px;
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center top;
+            }
+        }
+
+        .controls {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-left: 50px;
+
+            .heart {
+                display: inline-flex;
+                font-size: 30px;
+                padding: 5px;
+                margin-bottom: 10px;
+                color: #acb8cc;
+                background-color: transparent;
+                cursor: pointer;
+                width: 50px;
+                height: 50px;
+                margin-bottom: 10px;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+                z-index: 99;
+
+
+                &:hover i {
+                    color: rgb(167, 36, 167);
+                }
+
+
+                i {
+                    background-color: transparent;
+                    position: relative;
+                    z-index: 99;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+
+
+                    &::after {
+                        content: '';
+                        width: 0px;
+                        height: 0px;
+                        background-color: white;
+                        border-radius: 50%;
+                        position: absolute;
+                        z-index: -1;
+                        // transform-origin: center center;
+                        transition: all .5s;
+                    }
+                }
+
+                &:hover i::after {
+                    width: 70px;
+                    height: 70px;
+                }
+
+
+
+
+
+
+
+
+            }
+
+            .share {
+                display: inline-flex;
+                font-size: 30px;
+                padding: 5px;
+                margin-bottom: 10px;
+                color: #acb8cc;
+                cursor: pointer;
+                width: 50px;
+                height: 50px;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+
+                &:hover i {
+                    color: rgb(167, 36, 167);
+                }
+
+                i {
+                    background-color: transparent;
+                    position: relative;
+                    z-index: 99;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+
+
+                    &::after {
+                        content: '';
+                        width: 0px;
+                        height: 0px;
+                        background-color: white;
+                        border-radius: 50%;
+                        position: absolute;
+                        z-index: -1;
+                        // transform-origin: center center;
+                        transition: all .5s;
+                    }
+                }
+
+                &:hover i::after {
+                    width: 70px;
+                    height: 70px;
+                }
+            }
+
+            .prev {
+                display: inline-flex;
+                font-size: 30px;
+                padding: 5px;
+                margin-bottom: 10px;
+                color: #acb8cc;
+                cursor: pointer;
+                width: 50px;
+                height: 50px;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+
+                &:hover i {
+                    color: rgb(167, 36, 167);
+                }
+
+                i {
+                    background-color: transparent;
+                    position: relative;
+                    z-index: 99;
+
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+
+
+                    &::after {
+                        content: '';
+                        width: 0px;
+                        height: 0px;
+                        background-color: white;
+                        border-radius: 50%;
+                        position: absolute;
+                        z-index: -1;
+                        // transform-origin: center center;
+                        transition: all .5s;
+                    }
+                }
+
+                &:hover i::after {
+                    width: 70px;
+                    height: 70px;
+                }
+            }
+
+            .next {
+                display: inline-flex;
+                font-size: 30px;
+                padding: 5px;
+                margin-bottom: 10px;
+                color: #acb8cc;
+                cursor: pointer;
+                width: 50px;
+                height: 50px;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+
+                &:hover i {
+                    color: rgb(167, 36, 167);
+                }
+
+                i {
+                    background-color: transparent;
+                    position: relative;
+                    z-index: 99;
+
+
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+
+
+                    &::after {
+                        content: '';
+                        width: 0px;
+                        height: 0px;
+                        background-color: white;
+                        border-radius: 50%;
+                        position: absolute;
+                        z-index: -1;
+                        // transform-origin: center center;
+                        transition: all .5s;
+                    }
+                }
+
+                &:hover i::after {
+                    width: 70px;
+                    height: 70px;
+                }
+
+            }
+
+            .play {
+                display: inline-flex;
+                font-size: 100px;
+                padding: 5px;
+                margin-bottom: 10px;
+                filter: drop-shadow(0 11px 6px rgba(172, 184, 204, 0.45));
+                color: #fff;
+                cursor: pointer;
+                width: 100px;
+                height: 100px;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+            }
+        }
+    }
+
+    .progress {
+        position: relative;
+
+        .songName {
+            color: #71829e;
+            font-size: 20px;
+            margin-top: -20px;
+        }
+
+        .singer {
+            color: #71829e;
+            opacity: 0.7;
+            margin-bottom: 10px;
+        }
+
+        .total {
+            position: relative;
+            left: 370px;
+            user-select: none;
+            top: -5px;
+        }
+
+        .slider {
+            width: 100%;
+            height: 10px;
+            background-color: rgb(204, 192, 192);
+            position: relative;
+
+            .slider_bar {
+                position: absolute;
+                height: 100%;
+                background-color: gray;
+                // width: 50%;
+                pointer-events: none;
+            }
+        }
+
+        .now {
+            user-select: none;
+        }
+    }
+
+}

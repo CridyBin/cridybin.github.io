@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../b.png">
+    <style>
+        body {}
+    </style>
+
+    <title>数码时钟</title>
+    <style>
+        body {
+            width: 98%;
+            height: 98vh;
+            display: flex;
+            background-image: linear-gradient(to right, #e4afcb 0%, #b8cbb8 0%, #b8cbb8 0%, #e2c58b 30%, #c2ce9c 64%, #7edbdc 100%);
+            justify-content: center;
+            align-items: center;
+        }
+
+        section.clock {
+            display: flex;
+            /* width: 1200px; */
+
+            width: 100%;
+            margin: 0 auto;
+            align-items: center;
+            justify-content: center;
+            align-items: center;
+            /* background-color: rgb(27, 20, 20); */
+        }
+
+        .second,
+        .minute,
+        .hour {
+            background-color: rgba(27, 20, 20, 0.304);
+            width: 400px;
+            height: 400px;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+
+            border-radius: 20px;
+            margin-right: 50px;
+        }
+
+        .ten {
+            height: 290px;
+            width: 170px;
+            margin: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+
+        }
+
+        .single {
+
+            height: 290px;
+            width: 170px;
+            margin: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+
+        .ten .piece {
+            display: block;
+            background-color: #fff;
+            border: 2px solid transparent;
+            border-right-color: #aaa;
+            border-bottom-color: #aaa;
+            /* position: absolute; */
+            height: 50px;
+            width: 50px;
+            transform: scale(0);
+            transition: all 0.5s;
+            /* transform: scale(1); */
+        }
+
+        .single .piece {
+            display: block;
+            background-color: #fff;
+            border: 2px solid transparent;
+            border-right-color: #aaa;
+            border-bottom-color: #aaa;
+            /* position: absolute; */
+            height: 50px;
+            width: 50px;
+            transform: scale(0);
+            transition: all 0.5s;
+            /* transform: scale(1); */
+
+
+        }
+
+        .second .change {
+
+            transform: scale(1);
+            /* background-color: red; */
+        }
+
+        .minute .change {
+
+            transform: scale(1);
+            /* background-color: red; */
+        }
+
+        .hour .change {
+            transform: scale(1);
+        }
+
+
+
+        /* .piece:nth-of-type(1) {
+            top: 0;
+            left: 0;
+        }
+
+        .piece:nth-of-type(2) {
+            top: 0;
+            left: 60px;
+        }
+
+        .piece:nth-of-type(3) {
+            top: 0;
+            left: 120px;
+        }
+
+        .piece:nth-of-type(4) {
+            top: 60px;
+            left: 0px;
+        }
+
+        .piece:nth-of-type(5) {
+            top: 60px;
+            left: 60px;
+        }
+
+        .piece:nth-of-type(6) {
+            top: 60px;
+            left: 120px;
+        }
+
+        .piece:nth-of-type(7) {
+            top: 120px;
+            left: 0px;
+        }
+
+        .piece:nth-of-type(8) {
+            top: 120px;
+            left: 60px;
+        }
+
+        .piece:nth-of-type(9) {
+            top: 120px;
+            left: 120px;
+        }
+
+        .piece:nth-of-type(10) {
+            top: 180px;
+            left: 0px;
+        }
+
+        .piece:nth-of-type(11) {
+            top: 180px;
+            left: 60px;
+        }
+
+        .piece:nth-of-type(12) {
+            top: 180px;
+            left: 120px;
+        }
+
+        .piece:nth-of-type(13) {
+            top: 240px;
+            left: 0px;
+        }
+
+        .piece:nth-of-type(14) {
+            top: 240px;
+            left: 60px;
+        }
+
+        .piece:nth-of-type(15) {
+            top: 240px;
+            left: 120px;
+        }
+
+        .second .number .show {
+            transform: scale(1);
+        } */
+    </style>
+</head>
+<!-- 一维转二维  二维转一维 -->
+
+<body>
+    <section class="clock">
+        <div class="hour">
+            <div class="box">
+                <div class="ten">
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                </div>
+            </div>
+            <div class="box">
+                <div class="single">
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                </div>
+            </div>
+
+        </div>
+        <div class="minute">
+            <div class="box">
+                <div class="ten">
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                </div>
+            </div>
+            <div class="box">
+                <div class="single">
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                </div>
+            </div>
+
+        </div>
+        <div class="second">
+            <div class="box">
+                <div class="ten">
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                </div>
+            </div>
+            <div class="box">
+                <div class="single">
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                    <div class="piece"></div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <script>
+
+
+        var nums = [
+            // 0
+            [
+                [1, 1, 1],
+                [1, 0, 1],
+                [1, 0, 1],
+                [1, 0, 1],
+                [1, 1, 1],
+            ],
+            // 1
+            [
+                [0, 0, 1],
+                [0, 0, 1],
+                [0, 0, 1],
+                [0, 0, 1],
+                [0, 0, 1],
+            ],
+            // 2
+            [
+                [1, 1, 1],
+                [0, 0, 1],
+                [1, 1, 1],
+                [1, 0, 0],
+                [1, 1, 1],
+            ],
+            // 3
+            [
+                [1, 1, 1],
+                [0, 0, 1],
+                [1, 1, 1],
+                [0, 0, 1],
+                [1, 1, 1],
+            ],
+            // 4
+            [
+                [1, 0, 1],
+                [1, 0, 1],
+                [1, 1, 1],
+                [0, 0, 1],
+                [0, 0, 1],
+            ],
+            // 5
+            [
+                [1, 1, 1],
+                [1, 0, 0],
+                [1, 1, 1],
+                [0, 0, 1],
+                [1, 1, 1],
+            ],
+            // 6
+            [
+                [1, 1, 1],
+                [1, 0, 0],
+                [1, 1, 1],
+                [1, 0, 1],
+                [1, 1, 1],
+            ],
+            // 7
+            [
+                [1, 1, 1],
+                [0, 0, 1],
+                [0, 0, 1],
+                [0, 0, 1],
+                [0, 0, 1],
+            ],
+            // 8
+            [
+                [1, 1, 1],
+                [1, 0, 1],
+                [1, 1, 1],
+                [1, 0, 1],
+                [1, 1, 1],
+            ],
+            // 9
+            [
+                [1, 1, 1],
+                [1, 0, 1],
+                [1, 1, 1],
+                [0, 0, 1],
+                [1, 1, 1],
+            ],
+
+        ]
+
+
+
+        window.onload = function () {
+            setInterval(function () {
+                var now = new Date()
+                var hh = String(now.getHours()).padStart(2, "0")
+                var mm = String(now.getMinutes()).padStart(2, "0")
+                var ss = String(now.getSeconds()).padStart(2, "0")
+                var seconds = document.querySelector(".second")
+                var minutes = document.querySelector(".minute")
+                var hours = document.querySelector(".hour")
+                seconds.querySelectorAll(".box").forEach(function (ele, i) {
+                    showNum(ele, parseInt(ss[i]))
+
+                })
+                minutes.querySelectorAll(".box").forEach(function (ele, i) {
+                    showNum(ele, parseInt(mm[i]))
+
+                })
+                hours.querySelectorAll(".box").forEach(function (ele, i) {
+                    showNum(ele, parseInt(hh[i]))
+
+                })
+            }, 1000)
+
+
+
+
+            function showNum(ele, n) {
+                // console.log(ele);
+                var pieces = ele.querySelectorAll(".piece")
+                // console.log(pieces);
+                nums[n].forEach(function (rowItem, rowi) {
+                    rowItem.forEach(function (colItem, coli) {
+                        if (colItem) {
+                            pieces[rowi * 3 + coli].classList.add("change")
+                        } else {
+                            pieces[rowi * 3 + coli].classList.remove("change")
+                        }
+                    })
+                })
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

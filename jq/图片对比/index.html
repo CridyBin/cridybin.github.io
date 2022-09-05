@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片对比</title>
+    <link rel="shortcut icon" href="../b.png">
+
+    <link rel="stylesheet" href="./body五彩斑斓.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <style>
+        .wrapper {
+            width: 400px;
+            height: 390px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 13px 17px 6px -7px #414045;
+
+        }
+
+        .wrapper img {
+            width: 400px;
+            height: 390px;
+        }
+
+        .wrapper .top-content {
+            width: 130px;
+            height: 390px;
+            position: absolute;
+            border-right: 5px solid lightgray;
+            z-index: 9;
+        }
+
+        .wrapper .top {
+            /* 最下面 */
+            width: 100%;
+            height: 390px;
+            /* border-right: 5px solid lightgray; */
+            position: absolute;
+            overflow: hidden;
+        }
+
+        .wrapper .top img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 9;
+        }
+
+        .wrapper .middle-content {
+            width: 260px;
+            height: 390px;
+            position: absolute;
+            border-right: 5px solid lightgray;
+            z-index: 8;
+        }
+
+        .wrapper .middle {
+            /* 中间 */
+            width: 100%;
+            height: 390px;
+            /* border-right: 1px solid blue; */
+            position: absolute;
+            overflow: hidden;
+            /* z-index: 8; */
+        }
+
+        .wrapper .middle img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 8;
+        }
+
+        .circle {
+            margin: 0 auto;
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            box-sizing: border-box;
+            border: 5px solid lightgray;
+            position: relative;
+        }
+
+        .circle.c1 {
+            position: absolute;
+            top: 40%;
+            right: -28px;
+            margin-top: -25px;
+            z-index: 9;
+            overflow: visible;
+        }
+
+        .circle.c2 {
+            position: absolute;
+            top: 60%;
+            right: -28px;
+            margin-top: -25px;
+            z-index: 9;
+            overflow: visible;
+        }
+
+        .circle div {
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 8px;
+            position: absolute;
+            top: 30%;
+        }
+
+        .circle .left {
+            border-color: transparent lightgray transparent transparent;
+            left: 0;
+        }
+
+        .circle .right {
+            border-color: transparent transparent transparent lightgray;
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="top-content">
+            <div class="top">
+                <img src="./01.jpg" alt="">
+            </div>
+            <div class="circle c1">
+                <div class="left"></div>
+                <div class="right"></div>
+            </div>
+        </div>
+        <div class="middle-content">
+            <div class="middle">
+                <img src="./02.jpg" alt="">
+            </div>
+            <div class="circle c2">
+                <div class="left"></div>
+                <div class="right"></div>
+            </div>
+        </div>
+        <div class="bottom">
+            <img src="./03.jpg" alt="">
+        </div>
+    </div>
+    <script>
+
+        $('.c1').mousedown(function (e) {
+            e.preventDefault();
+            // console.log(e);
+            // console.log($('.wrapper').offset().left);
+            $('.wrapper').mousemove(function (w) {
+                // console.log(w.clientX, w.pageX);
+                // 拿到鼠标在wrapper中的位置
+                var x = (w.clientX || w.pageX) - $('.wrapper').offset().left
+                var y = (w.clientY || w.pageY) - $('.wrapper').offset().top
+                // console.log(x, y);
+                $('.c1').css('top', y)
+                // 如果点下去后移动鼠标的位置小于wrapper的宽度则可以拉动
+                if (x <= $('.wrapper').width()) {
+                    // console.log("aa");
+                    $('.top-content').css("width", x)
+                    if (x > $(".middle-content").width()) {
+                        $(".middle-content").css('width', x)
+                    }
+                }
+            })
+        })
+
+        // 当鼠标松开的时候删除鼠标移动事件
+        $('body').mouseup(function () {
+            $('.wrapper').unbind("mousemove")
+        })
+
+        // 
+
+        $('.c2').mousedown(function (e) {
+            // console.log(e);
+            e.preventDefault();
+            $('.wrapper').mousemove(function (w) {
+                var x = (w.pageX || w.clientX) - $('.wrapper').offset().left
+                var y = (w.pageY || w.clientY) - $('.wrapper').offset().top
+                $('.c2').css('top', y)
+                if (x <= $('.wrapper').width()) {
+                    $('.middle-content').css("width", x)
+                    if (x < $(".top-content").width()) {
+                        $(".top-content").css("width", x);
+                    }
+                }
+            })
+        })
+
+    </script>
+
+
+</body>
+
+</html>

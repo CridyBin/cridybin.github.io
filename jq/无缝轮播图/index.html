@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../b.png">
+
+    <link rel="stylesheet" href="minireset.css">
+    <link rel="stylesheet" href="./style.css">
+    <title>无缝轮播图</title>
+    <style>
+        body {
+            width: 100%;
+            height: 100vh;
+            background-image: linear-gradient(125deg, #E4FFCD, #6DD5FA, #2980B9, #E4FFCD);
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="swiper">
+        <div class="main">
+            <a href="javascript:;" class="arrow-l">
+                &lt;
+            </a>
+            <a href="javascript:;" class="arrow-r">
+                &gt;
+            </a>
+            <ul class="imgs">
+                <li><a href="javascript:;"><img src="./images/1.jpg" alt=""></a></li>
+                <li><a href="javascript:;"><img src="./images/2.jpg" alt=""></a></li>
+                <li><a href="javascript:;"><img src="./images/3.jpg" alt=""></a></li>
+                <li><a href="javascript:;"><img src="./images/4.jpg" alt=""></a></li>
+                <li><a href="javascript:;"><img src="./images/5.jpg" alt=""></a></li>
+                <li><a href="javascript:;"><img src="./images/6.jpg" alt=""></a></li>
+            </ul>
+            <ol class="circle"></ol>
+        </div>
+    </div>
+    <script src="./jQuery.min.js"></script>
+    <script src="./swiper.js"></script>
+    <script>
+        $(function () {
+            $.fn.swiper('.main', true, 2000)
+        })
+    </script>
+</body>
+
+</html>

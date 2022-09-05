@@ -1,0 +1,319 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size: 20px;
+    height: 2000px;
+}
+
+.sidebar {
+    text-align: center;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 250px;
+    color: #fff;
+    overflow: hidden;
+    overflow-y: auto;
+    background: #4b4b4b;
+    box-sizing: border-box;
+    padding: 50px 20px;
+
+    .img {
+        display: inline-block;
+        box-sizing: border-box;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        // border-width: 5px;
+        // border-style: solid;
+        // border-color: #fff #000;
+        position: relative;
+        overflow: hidden;
+
+        &:hover .rotate {
+            transform: rotate(90deg);
+
+
+        }
+
+        &:hover img {
+            transform: scale(1.2);
+        }
+
+        img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            transition: all 0.5s;
+            transform: scale(1);
+        }
+
+        .rotate {
+            position: absolute;
+            box-sizing: border-box;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9;
+            border-radius: 50%;
+            border-width: 2px;
+            transition: all 0.5s;
+            border-style: solid;
+            border-color: #fff rgb(20, 90, 181);
+            transform: rotate(0deg);
+        }
+    }
+
+    p.name {
+        color: rgb(192, 185, 185);
+        margin-top: 5px;
+
+        i {
+            color: cornflowerblue;
+        }
+    }
+
+    ul.menu {
+        margin-top: 50px;
+
+        li {
+
+            margin-bottom: 10px;
+
+            a {
+                display: block;
+                width: 100%;
+                text-decoration: none;
+                color: #fff;
+                transition: all 0.5s;
+            }
+
+            &:hover a {
+                background-color: antiquewhite;
+                color: #000;
+            }
+        }
+    }
+}
+
+.wrap {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.header {
+    display: none;
+    text-align: center;
+    // height: 250px;
+    color: #fff;
+    overflow: hidden;
+    overflow-y: auto;
+    background: #4b4b4b;
+    box-sizing: border-box;
+    padding: 50px 20px;
+
+
+
+    .img {
+        margin: auto;
+        width: 150px;
+        position: relative;
+        overflow: hidden;
+        border-radius: 50%;
+
+        &:hover .rotate {
+            transform: rotate(90deg);
+
+
+        }
+
+        &:hover img {
+            transform: scale(1.2);
+        }
+
+        .rotate {
+            position: absolute;
+            box-sizing: border-box;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9;
+            border-radius: 50%;
+            border-width: 2px;
+            transition: all 0.5s;
+            border-style: solid;
+            border-color: #fff rgb(20, 90, 181);
+            transform: rotate(0deg);
+        }
+    }
+
+    p.name {
+        margin-top: 5px;
+
+        i {
+            color: cornflowerblue;
+        }
+    }
+
+    ul.menu {
+        width: 200px;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+
+    }
+}
+
+.detail {
+    margin-left: 250px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: left;
+    position: relative;
+
+    .info {
+        width: 100%;
+        background: url(./bg-2.png) fixed;
+        padding: 20px 0;
+
+
+        .wrap {
+            padding-left: 30px;
+            box-sizing: border-box;
+
+            .title {
+
+
+                i {
+                    margin-right: 30px;
+                    color: chocolate;
+                }
+            }
+        }
+    }
+
+    .skills {
+        color: #fff;
+        width: 100%;
+        background-color: rgb(145, 142, 142);
+        padding: 20px 0;
+
+        .wrap {
+            padding-left: 30px;
+            box-sizing: border-box;
+
+            h2.title {
+                i {
+                    margin-right: 30px;
+                    color: chocolate;
+                }
+            }
+
+            ul.tec {
+                margin: 0;
+
+
+                li {
+
+                    text-align: center;
+                    box-sizing: border-box;
+                    padding: 0;
+
+                    h1 {
+                        font-size: 26px;
+                    }
+
+                    .img {
+                        margin: 0 auto;
+                        width: 80px;
+                        height: 80px;
+                        background-color: #fff;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        border-radius: 50%;
+
+                        &:hover i {
+                            transform: rotate(360deg);
+                        }
+
+                        i {
+                            font-size: 36px;
+                            color: orange;
+                            transform: rotate(0deg);
+                            transition: all 0.5s;
+                        }
+
+                        overflow: hidden;
+
+                        img {
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+
+                    p {
+                        text-align: center;
+                        word-break: break-all;
+                        font-size: 16px;
+                    }
+                }
+            }
+        }
+
+    }
+
+    .works {
+        .wrap {
+            padding: 0 20px;
+            box-sizing: border-box;
+
+
+            .work {
+                display: block;
+                padding: 0 20px;
+                text-decoration: none;
+                text-align: center;
+                transform: scale(1);
+                transition: all 0.5s;
+                margin: 0;
+
+
+                &:hover {
+                    transform: scale(1.1);
+                    color: orange;
+                }
+
+
+                h3 {
+                    margin: 0;
+                    padding: 10px 0;
+
+
+                }
+            }
+
+            .title {
+                i {
+                    margin-right: 30px;
+                    color: chocolate;
+                }
+            }
+
+            .col-sm-6 {
+                margin-bottom: 20px;
+            }
+        }
+    }
+
+
+}

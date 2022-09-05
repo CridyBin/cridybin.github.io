@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrap {
+            width: 1200px;
+            /* margin: 0 auto;
+             */
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .wrap>div {
+            /* display: block; */
+            margin: 20px auto;
+
+            width: 80px;
+            height: 30px;
+            padding: 20px 15px;
+            text-align: center;
+            background-color: gray;
+            font-size: 24px;
+            text-transform: capitalize;
+        }
+
+        .grow {
+            transition: all .3s;
+            transition-timing-function: linear;
+        }
+
+        .grow:hover {
+            transform: scale(1.2);
+        }
+
+        .shrink {
+            transition: all .3s;
+            transition-timing-function: linear;
+        }
+
+        .shrink:hover {
+            transform: scale(0.8);
+        }
+
+        .pulse {
+            animation-duration: .7s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            animation-direction: alternate-reverse;
+        }
+
+        .pulse:hover {
+            animation-name: change;
+            /* color: rebeccapurple; */
+        }
+
+        /* pulese */
+        @keyframes change {
+            0% {
+                transform: scale(1.1);
+            }
+
+            50% {
+                transform: scale(1);
+            }
+
+            100% {
+                transform: scale(0.9);
+            }
+        }
+
+        .wrap div.pulseGrow {
+            width: 120px;
+            animation-duration: .7s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            animation-direction: alternate-reverse;
+        }
+
+        .pulseGrow:hover {
+            animation-name: change1;
+        }
+
+        /* pulseGrow */
+        @keyframes change1 {
+            0% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+
+        .wrap div.pulseShrink {
+            width: 120px;
+            animation-duration: .7s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            animation-direction: alternate-reverse;
+        }
+
+        .pulseShrink:hover {
+            /* animation: change2 .7s linear infinite alternate-reverse; */
+            animation-name: change2;
+        }
+
+        /* pulseShrink */
+        @keyframes change2 {
+
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+
+                transform: scale(0.9);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* push */
+        .push:hover {
+            animation: change3 .5s linear 1 alternate-reverse;
+        }
+
+        @keyframes change3 {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(0.9);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* pop */
+    </style>
+</head>
+
+<body>
+    <!-- 2D Transitions -->
+    <div class="wrap">
+        <div class="grow">grow</div>
+        <div class="shrink">shrink</div>
+        <div class="pulse">pulse</div>
+        <div class="pulseGrow">pulseGrow</div>
+        <div class="pulseShrink">pulseShrink</div>
+        <div class="push">push</div>
+    </div>
+
+    <style>
+        .bt {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .bt div {
+            background-color: gray;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 150px;
+            height: 60px;
+        }
+
+        .fade {
+            transition: all .3s;
+        }
+
+        .fade:hover {
+            background-color: aqua;
+        }
+
+        .backPulse {
+            transition: all .3s;
+        }
+
+        .backPulse:hover {
+            background-color: aqua;
+        }
+
+        .sweepToRight {
+            position: relative;
+        }
+
+        .sweepToRight::before {
+            content: '';
+            background-color: aqua;
+            position: relative;
+            height: 100%;
+            left: 0;
+            top: 0;
+        }
+
+        .sweepToRight:hover .sweepToRight::before {
+            width: 20px;
+        }
+    </style>
+
+    <div class="bt">
+        <div class="fade">fade</div>
+        <div class="backPulse">backPulse</div>
+        <div class="sweepToRight">sweepToRight</div>
+        <div class="sweepToLeft">sweepToLeft</div>
+    </div>
+
+</body>
+
+</html>

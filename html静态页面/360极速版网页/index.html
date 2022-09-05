@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>360极速浏览器</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="./images/favicon.ico">
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="./css/swiper.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="containe">
+            <img src="./images/logo.png" alt="">
+            <span>
+                <a href="javascript:void(0)">论坛</a>
+                <a href="javascript:void(0)">扩展</a>
+                <a href="javascript:void(0)">Mac版</a>
+            </span>
+        </div>
+    </div>
+    <!-- Swiper -->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="./images/1.jpg" alt="" class="first">
+                <div class="content">
+                    <p class="bigTitleWord ">畅快浏览 极致体验</p>
+                    <p class="bigTitleTip ">全新Chrome内核浏览器，性能更强，速度更快</p>
+                    <span class="fluent-title-show">
+                        <a href="#" id="loadnew">32位版本</a>
+                        <!-- <img src="https://se3.360simg.com/t0102fdf3201e9fcf21.png"> -->
+                        <a href="#" id="loadnew64">64位版本<p>
+                                NEW</p></a>
+                    </span>
+                </div>
+
+                <img src="./images/1-l.png" alt="" class="left">
+                <img src="./images/1.m.png" alt="" class="middle">
+                <img src="./images/1-r.png" alt="" class="right">
+            </div>
+            <div class="swiper-slide">
+                <div class="word-content ">
+                    <p class="bigTitleWord">极速</p>
+                    <div class="line"></div>
+                    <p class="midTitleWord">全新Chromium内核</p>
+                    <p class="smaTitleWord">性能强劲，快如闪电。</p>
+                    <a href="#" class="alineCenter"></a>
+                </div>
+                <video autoplay="" loop="" muted="">
+                    <source src="./images/2.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="swiper-slide">
+                <div class="word-content ">
+                    <p class="bigTitleWord">极酷</p>
+                    <div class="line"></div>
+                    <p class="midTitleWord">暗夜炫黑模式</p>
+                    <p class="smaTitleWord">定义酷，定义你。</p>
+                    <a href="#" class="alineCenter"></a>
+                </div>
+                <video autoplay="" loop="" muted="">
+                    <source src="./images/3.mp4" type="video/mp4">
+
+                </video>
+            </div>
+            <div class="swiper-slide">
+                <div class="word-content ">
+                    <p class="bigTitleWord">极安全</p>
+                    <div class="line"></div>
+                    <p class="midTitleWord">DNS加密劫持</p>
+                    <p class="smaTitleWord">安全升级，肆意无忌</p>
+                    <a href="#" class="alineCenter"></a>
+                </div>
+                <video autoplay="" loop="" muted="">
+                    <source src="./images/4.mp4" type="video/mp4">
+
+                </video>
+            </div>
+            <div class="swiper-slide">
+                <div class="word-content ">
+                    <p class="bigTitleWord">极视界</p>
+                    <div class="line"></div>
+                    <p class="midTitleWord">4K高清视频播放</p>
+                    <p class="smaTitleWord">还原真实之美，尽显万物之色</p>
+                    <a href="#" class="alineCenter"></a>
+                </div>
+                <video autoplay="" loop="" muted="">
+                    <source src="./images/5.mp4" type="video/mp4">
+                </video>
+                <div id="footer" class="footer">Copyright © 2005-2022 360.CN All Rights
+                    Reserved 360互联网安全中心
+                    <a target="_blank" href="http://www.360.cn/privacy/v3/bps360jsllqWindowsb.html">隐私政策</a>
+                    <a target="_blank" href="https://beian.miit.gov.cn">京ICP证080047号[京ICP备08010314号-6]</a>
+                    <br>
+                    <span>
+                        网站举报电话：4006693600 举报邮箱：<a href="mailto:kefu@360.cn">kefu@360.cn</a> 互联网违法和不良信息举报中心：<a
+                            target="_blank" href="https://www.12377.cn/">https://www.12377.cn</a>
+                    </span>
+                    <br>
+                    <a href="#"> <img src="https://se1.360simg.com/t01d8eda6e551cf2615.png"
+                            style="vertical-align: middle; border:none;" alt=""> 京公网安备 11000002000006号</a>
+                </div>
+            </div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+
+    <!-- Swiper JS -->
+    <script src="./js/swiper.min.js"></script>
+    <script src="./js/jQuery.min.js"></script>
+
+    <!-- Initialize Swiper -->
+
+
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            direction: 'vertical',
+            // initialSlide: 5,
+            speed: 1000,
+            mousewheel: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });
+
+        $('.swiper-slide').find('.word-content').fadeOut()
+        $('.swiper-slide').eq(swiper.activeIndex).find('.word-content').fadeIn(1500)
+        document.body.addEventListener('mousewheel', function () {
+            $('.swiper-slide').eq(swiper.activeIndex).find('.word-content').fadeIn(1500)
+            $('.swiper-slide').eq(swiper.activeIndex).siblings().find('.word-content').fadeOut()
+        })
+        document.body.addEventListener('mousemove', function () {
+            console.log("aa");
+            $('.swiper-slide').eq(swiper.activeIndex).find('.word-content').fadeIn(1500)
+            $('.swiper-slide').eq(swiper.activeIndex).siblings().find('.word-content').fadeOut()
+        })
+
+    </script>
+</body>
+
+</html>

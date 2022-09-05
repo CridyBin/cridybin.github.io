@@ -1,0 +1,153 @@
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: lightblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 600px;
+}
+
+body .card {
+  width: 300px;
+  height: 400px;
+  background: url(./600x600.jpg) no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  transition: all 1s;
+  border-radius: 15px;
+  transform-style: preserve-3d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+body .card:before {
+  content: '';
+  width: 100%;
+  height: 100%;
+  background-color: rgba(29, 46, 157, 0);
+  border-radius: 15px;
+  transition: inherit;
+  position: absolute;
+  z-index: 1;
+}
+
+body .card:after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 15px;
+  background-color: black;
+  transform: translateZ(-20px);
+}
+
+body .card h2,
+body .card p,
+body .card h3 {
+  margin: 0;
+  padding: 0;
+  transition: inherit;
+}
+
+body .card .chart {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+  transform-style: preserve-3d;
+}
+
+body .card .chart .bar {
+  width: 25px;
+  height: 25px;
+  background-color: white;
+  transition: all 1s;
+  transform: rotate(-45deg);
+  transform-style: preserve-3d;
+}
+
+body .card .chart .bar span {
+  display: block;
+  text-align: right;
+  width: 150px;
+  height: 25px;
+  transform-origin: right center;
+  background-color: #f8f2f3;
+  transform: translateX(-150px) rotateY(-90deg);
+}
+
+body .card .chart .bar::before {
+  content: '';
+  width: 150px;
+  height: 25px;
+  display: block;
+  position: absolute;
+  transform-origin: right center;
+  transform: translateX(-137px) translateY(11px) rotateY(-90deg) rotateX(-90deg);
+  background-color: #f1e7e7;
+}
+
+body .card.active {
+  transform: rotateX(45deg);
+}
+
+body .card.active::before,
+body .card.active::after {
+  box-shadow: 0 0 30px 0 rgba(25, 23, 23, 0.741);
+}
+
+body .card.active::before {
+  background-color: rgba(51, 56, 82, 0.303);
+  filter: blur(1px);
+}
+
+body .card.active h2 {
+  transform: translateZ(40px);
+}
+
+body .card.active p {
+  transform: translateZ(25px);
+}
+
+body .card.active h3 {
+  transform: translateZ(15px);
+}
+
+body .card.active .bar1 {
+  transform: rotate(-45deg) translateZ(120px);
+}
+
+body .card.active .bar2 {
+  transform: rotate(-45deg) translateZ(80px);
+}
+
+body .card.active .bar3 {
+  transform: rotate(-45deg) translateZ(100px);
+}
+
+body .card.active .bar4 {
+  transform: rotate(-45deg) translateZ(150px);
+}
+
+body .card.active .bar5 {
+  transform: rotate(-45deg) translateZ(50px);
+}
+
+body .card.active .bar6 {
+  transform: rotate(-45deg) translateZ(50px);
+}
+
+body .card.active .bar7 {
+  transform: rotate(-45deg) translateZ(80px);
+}
+
+/*# sourceMappingURL=./04.css.map */

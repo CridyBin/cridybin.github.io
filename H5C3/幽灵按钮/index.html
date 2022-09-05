@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>幽灵按钮</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- 感知方向悬停按钮 -->
+    <div class="buttonContent">
+        <h3>感知方向悬停按钮</h3>
+        <div class="one">
+            <button class="remove">
+                <span>这是一个按钮1</span>
+                <div class="circle"></div>
+            </button>
+        </div>
+        <div class="one">
+            <button class="remove">
+                <span>这是一个按钮2</span>
+                <div class="circle"></div>
+            </button>
+        </div>
+        <div class="one">
+            <button class="remove">
+                <span>这是一个按钮3</span>
+                <div class="circle"></div>
+            </button>
+        </div>
+        <div class="one">
+            <button class="remove">
+                <span>这是一个按钮4</span>
+                <div class="circle"></div>
+            </button>
+        </div>
+    </div>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            /* height: 100%; */
+            height: 100vh;
+            overflow-x: hidden;
+            color: white;
+            display: flex;
+            width: 100vw;
+            flex-wrap: wrap;
+            background-color: #2a364f96;
+            background-color: #8bc6ec;
+            background-image: linear-gradient(135deg, #8bc6ec 0%, #9599e2 100%);
+        }
+
+        .buttonContent {
+            width: 180px;
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            /* flex: 1; */
+            /* border: 1px solid red; */
+        }
+
+        .buttonContent h3 {
+            text-align: center;
+        }
+
+        .buttonContent>div {
+            width: 180px;
+        }
+
+        button.remove {
+            outline: none;
+            border: none;
+            /* border: 1px solid black; */
+            border-radius: 30px;
+            height: 60px;
+            width: 180px;
+            background: #f8b627;
+            overflow: hidden;
+            position: relative;
+
+        }
+
+        .one {
+            /* position: absolute; */
+            width: 100px;
+            height: 100px;
+            /* background-color: lawngreen; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .one .remove .circle {
+            width: 360px;
+            height: 360px;
+            border-radius: 50%;
+            background: rgba(20, 180, 87, .8);
+            position: absolute;
+            top: 0;
+            right: 0;
+            transform: scale(0);
+            transition: transform .8s;
+        }
+
+        .one .remove span {
+            position: relative;
+            z-index: 99;
+            color: #fff;
+            font-size: 18px;
+        }
+
+        .one .remove.active .circle {
+            transform: scale(1);
+            transition: transform .6s ease;
+        }
+
+        .one .remove.leave .circle {
+            background-color: rgba(129, 80, 108, 0.6);
+        }
+    </style>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script>
+
+        btnEvent($('.remove'))
+        function btnEvent(JQobj) {
+            JQobj.mousemove(function (e) {
+
+                var x = (e.pageX || e.clientX) - $(this).offset().left
+
+                var y = (e.pageY || e.clientY) - $(this).offset().top
+
+                $(this).find('.circle').css({
+                    left: x - $(this).find('.circle').width() / 2,
+                    top: y - $(this).find('.circle').width() / 2
+                });
+                $(this).addClass('active');
+                $(this).mouseleave(function () {
+                    $(this).removeClass('active').addClass('leave')
+                })
+                $(this).mouseenter(function () {
+                    $(this).removeClass('leave').addClass('active')
+                })
+            })
+        }
+
+    </script>
+
+    <!-- CSS3按钮 -->
+    <div class="css3Button">
+        <h3>CSS3按钮</h3>
+        <div class="button1">
+            <input type="checkbox">
+            <div class="circle"></div>
+            <div class="bgc"></div>
+        </div>
+        <div class="button2">
+            <input type="checkbox">
+            <div class="circle"></div>
+        </div>
+        <div class="button3">
+            <input type="checkbox">
+            <div class="circle">
+                <i class="fa fa-check"></i>
+                <i class="fa fa-times"></i>
+            </div>
+        </div>
+        <div class="button4">
+            <input type="checkbox" name="" id="">
+            <div class="box">
+                <div class="circle"></div>
+            </div>
+        </div>
+
+    </div>
+    <style>
+        .css3Button {
+            width: 300px;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+    <style>
+        .button1 {
+            position: relative;
+            width: 200px;
+            height: 70px;
+            padding: 5px;
+            box-sizing: border-box;
+            border-radius: 70px;
+            overflow: hidden;
+            margin-top: 20px;
+            box-shadow: 1px -2px 5px 0px rgb(0 0 0 / 50%);
+
+        }
+
+        .button1 input {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            opacity: 0;
+            z-index: 11;
+
+        }
+
+        .button1 .circle {
+            width: 60px;
+            height: 60px;
+            background-color: white;
+            position: absolute;
+            border-radius: 50%;
+            transition: all 1s;
+            left: 5px;
+        }
+
+        .button1 input:checked~.circle {
+            background-color: white;
+            left: 135px;
+        }
+
+        .button1 .bgc {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: -1;
+            background-color: #af4c4c;
+            transition: all .5s;
+        }
+
+        .button1 input:checked~.bgc {
+            background-color: #4caf50;
+        }
+    </style>
+    <style>
+        .button2 {
+            position: relative;
+            margin-top: 20px;
+            width: 200px;
+            height: 70px;
+            /* background-color: lightblue; */
+            padding: 5px;
+            box-sizing: border-box;
+            border-radius: 70px;
+            overflow: hidden;
+            border: 2px solid white;
+        }
+
+        .button2 .circle {
+            width: 60px;
+            height: 60px;
+            background-color: white;
+            position: absolute;
+            border-radius: 50%;
+            transition: all 1s;
+            left: 3px;
+            top: 2.5px;
+        }
+
+        .button2 input {
+            position: absolute;
+            z-index: 11;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            border: 0;
+            outline: none;
+            opacity: 0;
+        }
+
+        .button2 input:checked~.circle {
+            /* background-color: black; */
+            left: 133px;
+        }
+    </style>
+    <style>
+        .button3 {
+            position: relative;
+            margin-top: 20px;
+            width: 200px;
+            height: 70px;
+            background-color: rgba(0, 0, 0, .8);
+            padding: 5px;
+            box-sizing: border-box;
+            border-radius: 70px;
+            overflow: hidden;
+        }
+
+        .button3 .circle {
+            width: 60px;
+            height: 60px;
+            background-color: #4caf50;
+            position: relative;
+            border-radius: 50%;
+            transition: all 1s;
+            left: 0;
+
+            /* line-height: 60px; */
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* top: 5px; */
+            transform: rotate(0);
+        }
+
+        .button3 .circle .fa-check {
+            position: absolute;
+            color: white;
+            display: block;
+            font-size: 36px;
+            transition: all .5s;
+            opacity: 1;
+        }
+
+        .button3 .circle .fa-times {
+            position: absolute;
+            color: white;
+            display: block;
+            transition: all .5s;
+            font-size: 36px;
+            opacity: 0;
+        }
+
+
+
+        .button3 input {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            z-index: 11;
+        }
+
+        .button3 input:checked~.circle {
+            background-color: red;
+            left: 130px;
+            transform: rotate(360deg);
+        }
+
+        .button3 input:checked~.circle .fa-times {
+            /* display: block;
+             */
+            opacity: 1;
+
+        }
+
+        .button3 input:checked~.circle .fa-check {
+            opacity: 0;
+        }
+    </style>
+    <style>
+        div.button4 {
+            display: block;
+            position: relative;
+            margin-top: 20px;
+            width: 200px;
+            height: 70px;
+
+            padding: 5px;
+            box-sizing: border-box;
+            border-radius: 70px;
+
+        }
+
+        div.button4 input {
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            left: 0;
+            top: 0;
+            z-index: 11;
+            position: absolute;
+            transform-origin: left center;
+            transition: all 1s;
+            transform: rotate(0);
+
+        }
+
+        div.button4 .box {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            background-color: rgba(0, 0, 0, .8);
+            transform-origin: left center;
+            border-radius: 70px;
+            transition: all 1s;
+            transform: rotate(0deg);
+        }
+
+        .button4 .circle {
+            width: 58px;
+            height: 58px;
+            transition: all .8s;
+            border: 2px solid #4caf50;
+            position: absolute;
+            left: 5px;
+            top: 4px;
+            border-radius: 50%;
+        }
+
+        .button4 input:checked {
+            transform: rotate(90deg);
+        }
+
+        .button4 input:checked~.box {
+            transform: rotate(90deg);
+        }
+
+        .button4 input:checked~.box .circle {
+            left: 133px;
+            transition: all 1s .7s;
+        }
+    </style>
+
+    <!-- 表单按钮美化 -->
+    <div class="checkbox">
+        <h3>表单按钮美化</h3>
+
+        <form>
+            <input type="submit">
+            <span>复选</span>
+            <label>
+                <div class="course">
+                    <input type="checkbox" name="course" id="class" value="PE">
+                    <span class="pe"></span>
+                </div>体育课
+            </label>
+            <label>
+                <div class="course">
+                    <input type="checkbox" name="course" id="class" value="math">
+                    <span class="math"></span>
+                </div>数学课
+            </label>
+            <label>
+                <div class="course">
+                    <input type="checkbox" name="course" id="class" value="chines">
+                    <span class="chines"></span>
+                </div>语文课
+            </label>
+
+            <span>单选</span>
+            <label>
+                <div class="course">
+                    <input type="radio" name="sex" value="man">
+                    <span class="pe"></span>
+                </div>男
+            </label>
+            <label>
+                <div class="course">
+                    <input type="radio" name="sex" value="girl">
+                    <span class="pe"></span>
+                </div>女
+            </label>
+            <label>
+                <div class="course">
+                    <input type="radio" name="married" value="yes">
+                    <span class="pe"></span>
+                </div>已婚
+            </label>
+            <label>
+                <div class="course">
+                    <input type="radio" name="married" value="no">
+                    <span class="pe"></span>
+                </div>未婚
+            </label>
+
+
+
+        </form>
+
+
+    </div>
+    <style>
+        .checkbox {
+            display: flex;
+            flex-direction: column;
+            width: 140px;
+        }
+
+        .checkbox form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid #fff;
+            margin-bottom: 10px;
+            padding: 5px;
+        }
+
+        /* 体育 */
+        .checkbox .course {
+            position: relative;
+            width: 80px;
+            height: 30px;
+            background-color: rgb(179, 186, 189);
+            z-index: -1;
+            border-radius: 30px;
+            overflow: hidden;
+        }
+
+        .checkbox .course input {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+        }
+
+        .checkbox .course span.pe {
+            transition: all .5s;
+            display: block;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            position: absolute;
+            background-color: rgb(104, 101, 101);
+        }
+
+
+        .checkbox .course span.pe::after {
+            content: '';
+            width: 30px;
+            /* z-index: -999; */
+            height: 100%;
+            left: 0px;
+            background-color: white;
+            border-radius: 50%;
+            position: absolute;
+            transition: all .5s;
+
+        }
+
+        .checkbox .course input:checked~span.pe::after {
+            left: 50px;
+        }
+
+        .checkbox .course input:checked~span.pe {
+            background-color: #4caf50;
+        }
+
+        /* 数学 */
+        .checkbox .course span.math {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            background-color: white;
+            transition: all 0.5s;
+        }
+
+        .checkbox .course span.math::after {
+            text-align: center;
+            content: 'NO';
+            width: 65px;
+            height: 30px;
+            line-height: 30px;
+            position: absolute;
+            z-index: -1;
+            left: 20px;
+            background-color: rgb(104, 101, 101);
+        }
+
+        .checkbox .course span.math::before {
+            text-align: center;
+            content: 'YES';
+            width: 65px;
+            height: 30px;
+            line-height: 30px;
+            position: absolute;
+            z-index: -1;
+            left: -55px;
+            background-color: #4caf50;
+        }
+
+        .checkbox .course input:checked~span.math {
+            left: 50px;
+        }
+
+        /* 语文 */
+        .checkbox .course span.chines {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            background-color: white;
+            transition: all 0.5s;
+        }
+
+        .checkbox .course span.chines::after {
+            text-align: center;
+            content: '否';
+            width: 65px;
+            height: 30px;
+            line-height: 30px;
+            position: absolute;
+            font-weight: 600;
+            z-index: -1;
+            left: 20px;
+            background-color: rgb(104, 101, 101);
+        }
+
+        .checkbox .course span.chines::before {
+            text-align: center;
+            content: '是';
+            font-weight: 600;
+            width: 65px;
+            height: 30px;
+            line-height: 30px;
+            position: absolute;
+            z-index: -1;
+            left: -55px;
+            background-color: #4caf50;
+        }
+
+        .checkbox .course input:checked~span.chines {
+            left: 50px;
+        }
+    </style>
+
+    <!-- ihover -->
+    <div class="ihover">
+        <h3>ihover</h3>
+        <div class="images-item">
+            <div class="img">
+                <div class="rotate"></div>
+                <img src="./2.jpg" alt="">
+            </div>
+            <div class="info">
+                <div class="info-back">
+                    <h3>Heading here</h3>
+                    <p>Description goes here</p>
+                </div>
+            </div>
+        </div>
+
+        <style>
+            .ihover {
+                width: 300px;
+                display: flex;
+
+                flex-direction: column;
+                align-items: center;
+                align-content: center;
+            }
+
+
+
+            .ihover .images-item {
+                position: relative;
+                width: 200px;
+                height: 200px;
+            }
+
+            .ihover .images-item .img {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                box-sizing: border-box;
+                border-radius: 50%;
+                overflow: hidden;
+
+
+
+                /* border-top: 10px solid red;
+                border-left: 10px solid yellow;
+                border-right: 10px solid green;
+                border-bottom: 10px solid blue; */
+
+                /* border-width: 10px;
+                border-style: solid;
+                border-color: rosybrown lightgreen lightgreen rosybrown; */
+
+            }
+
+            .ihover .images-item .img .rotate {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                box-sizing: border-box;
+                border-radius: 50%;
+                border-width: 10px;
+                border-style: solid;
+                background-color: transparent;
+                border-color: rosybrown lightgreen lightgreen rosybrown;
+                transition: all 0.5s linear;
+                z-index: 3;
+
+            }
+
+            .ihover .images-item .img img {
+                width: 100%;
+                height: 100%;
+
+            }
+
+            .ihover .images-item .info {
+                position: absolute;
+                width: 200px;
+                height: 200px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                text-align: center;
+                align-items: center;
+                border-radius: 50%;
+                background-color: rgba(0, 0, 0, .8);
+                box-sizing: border-box;
+                /* border: 10px solid transparent; */
+                transition: all .6s;
+                /* z-index: -1; */
+                opacity: 0;
+                overflow: hidden;
+
+            }
+
+            .ihover .images-item .info .info-back h3 {
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                margin: 0 30px;
+            }
+
+            .ihover .images-item .info .info-back p {
+                font-size: 12px;
+                padding: 10px 0;
+                border-top: 1px solid gray;
+                margin: 0 30px;
+                font-style: italic;
+                color: lightgray;
+            }
+
+            .images-item:hover .rotate {
+                transform: rotate(180deg);
+                /* background-color: red; */
+
+            }
+
+            .images-item:hover .info {
+
+                opacity: 1;
+            }
+        </style>
+        <div class="images-item2">
+            <div class="img">
+                <div class="rotate"></div>
+                <img src="./4.jpg" alt="">
+            </div>
+            <div class="info">
+                <div class="info-back">
+                    <h3>Heading here</h3>
+                    <p>Description goes here</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        .ihover .images-item2 {
+            width: 200px;
+            height: 200px;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .ihover .images-item2 .img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            overflow: hidden;
+            position: absolute;
+
+        }
+
+        .ihover .images-item2 .img img {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .ihover .images-item2 .img .rotate {
+            position: absolute;
+            width: 100%;
+            border-radius: 50%;
+            height: 100%;
+            box-sizing: border-box;
+            border-width: 10px;
+            border-style: solid;
+            border-color: #fff;
+
+        }
+
+        .ihover .images-item2 .info {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            left: -400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, .8);
+            box-sizing: border-box;
+            /* border: 10px solid transparent; */
+            transition: all .6s;
+            /* z-index: -1; */
+            opacity: 0;
+            overflow: hidden;
+            pointer-events: none;
+
+        }
+
+        .ihover .images-item2 .info .info-back h3 {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 0 30px;
+        }
+
+        .ihover .images-item2 .info .info-back p {
+            font-size: 12px;
+            padding: 10px 0;
+            border-top: 1px solid gray;
+            margin: 0 30px;
+            font-style: italic;
+            color: lightgray;
+        }
+
+        .ihover .images-item2:hover .info {
+            left: 0;
+            opacity: 1;
+        }
+    </style>
+
+    <!-- 幽灵按钮 -->
+    <div class="ghost">
+        <h3>幽灵按钮</h3>
+        <div class="ghost1">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="ghost2">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <style>
+        .ghost {
+            width: 200px;
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            align-items: center;
+        }
+
+        .ghost .ghost1 {
+            width: 100px;
+            height: 100px;
+            position: relative;
+            background-color: rgba(0, 0, 0, .2);
+            margin-bottom: 20px;
+        }
+
+        .ghost .ghost1 span {
+            margin: 0;
+            padding: 0;
+            display: block;
+            position: absolute;
+            height: 2px;
+            width: 0px;
+            background-color: #f8b627;
+            transition: width 0.5s;
+        }
+
+        .ghost .ghost1 span:nth-child(1) {
+            left: 50%;
+            top: 0px;
+            transform: translate(-50%);
+        }
+
+        .ghost .ghost1 span:nth-child(2) {
+            right: -49px;
+            top: 50%;
+            transform: rotate(90deg) translateY(-50%);
+        }
+
+        .ghost .ghost1 span:nth-child(3) {
+            bottom: -1px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .ghost .ghost1 span:nth-child(4) {
+            left: -50px;
+            top: 50%;
+            transform: rotate(90deg) translateY(-50%);
+        }
+
+        .ghost .ghost1:hover span {
+            width: 100px;
+        }
+    </style>
+    <style>
+        .ghost2 {
+            width: 150px;
+            height: 56px;
+            border: 2px solid #fff;
+            position: relative;
+        }
+
+        .ghost2 span {
+            position: absolute;
+            display: block;
+            background-color: #000;
+            width: 0px;
+            height: 2px;
+            transition: all .5s;
+        }
+
+        .ghost2 span:nth-child(1) {
+            left: -70px;
+            top: -2px;
+        }
+
+        .ghost2 span:nth-child(2) {
+            right: -15px;
+            top: -60px;
+            transform: rotate(90deg) translateY(-50%);
+        }
+
+        .ghost2 span:nth-child(3) {
+            bottom: -2px;
+            right: -70px;
+            transform: translateY(-50%);
+        }
+
+        .ghost2 span:nth-child(4) {
+            left: -17px;
+            bottom: -50px;
+            transform: rotate(90deg) translateY(-50%);
+        }
+
+        .ghost2:hover span:nth-child(1) {
+            left: 0;
+            width: 30px;
+        }
+
+        .ghost2:hover span:nth-child(2) {
+            top: 15px;
+            width: 30px;
+        }
+
+        .ghost2:hover span:nth-child(3) {
+            right: -2px;
+            width: 30px;
+        }
+
+        .ghost2:hover span:nth-child(4) {
+            bottom: 15px;
+            width: 30px;
+        }
+    </style>
+
+
+
+
+</body>
+
+</html>

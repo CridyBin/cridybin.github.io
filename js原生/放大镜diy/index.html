@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../b.png">
+    <link rel="stylesheet" href="../01 数组/轮播图/css/minireset.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="./js/index.js"></script>
+    <title>放大镜</title>
+    <style>
+        li {
+            list-style: none;
+        }
+
+        body {
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 1000% 1000%;
+            animation: gradient 15s ease infinite;
+            padding: 100px 30px;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+        <div class="left">
+            <div class="mask"></div>
+        </div>
+        <ul style=" margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: space-between;
+        width: 340px; ">
+            <li data-pic="./images/1.jpg"><img src="./images/1.jpg" alt=""></li>
+            <li data-pic="./images/2.jpg"><img src="./images/2.jpg" alt=""></li>
+            <li data-pic="./images/3.jpg"><img src="./images/3.jpg" alt=""></li>
+            <li data-pic="./images/4.jpg"><img src="./images/4.jpg" alt=""></li>
+            <li data-pic="./images/5.jpg"><img src="./images/5.jpg" alt=""></li>
+            <li data-pic="./images/6.jpg"><img src="./images/6.jpg" alt=""></li>
+        </ul>
+
+    </div>
+    <div class="right"></div>
+</body>
+
+</html>

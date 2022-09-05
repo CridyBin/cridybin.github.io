@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+    <link rel="shortcut icon" href="../b.png">
+
+
+    <link rel="stylesheet" href="./body五彩斑斓.css">
+    <title>百度一下</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: start;
+        }
+
+        ul {
+            height: 400px;
+            width: 300px;
+            overflow: auto;
+        }
+
+        h5 {
+            margin: 0;
+            padding: 0;
+        }
+
+        input {
+            display: block;
+            width: 512px;
+            height: 16px;
+            padding: 12px 16px;
+            font-size: 16px;
+            margin: 0;
+            vertical-align: top;
+            outline: 0;
+            box-shadow: none;
+            border-radius: 10px;
+            border: 2px solid #c4c7ce;
+            background: #fff;
+            color: #222;
+            overflow: hidden;
+            box-sizing: content-box;
+        }
+
+        input:hover {
+            border: 2px solid #87888c;
+        }
+
+        img {
+            width: 200px;
+            /* height: 200px; */
+        }
+
+        button.active {
+            background-color: cornflowerblue;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="./logo.png" alt="">
+    <input type="text" name="" id="" placeholder="百度一下">
+    <div class="area">
+        <h5>地名首字母</h5>
+    </div>
+    <!-- <button>A</button>
+    <button>B</button>
+    <button>C</button> -->
+    <ul></ul>
+
+    <script>
+        var english = ['A', "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+        // 动态创建按钮
+        for (let i = 0; i < english.length; i++) {
+            let btn = document.createElement('button')
+            btn.innerText = english[i]
+            document.querySelector('.area').appendChild(btn)
+
+        }
+
+        function getJSON(url, callback) {
+            var xhr = new XMLHttpRequest()
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    callback(JSON.parse(xhr.response))
+                    // JSON.parse()  把字符串转换为json
+                    // JSON.stringify()  把json转为字符串
+
+                    // callback(xhr.response)
+                }
+            }
+            xhr.open("GET", url, true)
+            xhr.send()
+        }
+        function parseCity(arr) {
+            var empty = []
+            var num = 0
+            // 确认首字母不同的个数
+            arr.forEach(function (value) {
+                if (empty.includes(value.py.slice(0, 1))) {
+
+                } else {
+                    empty.push(value.py.slice(0, 1))
+                    num++
+                }
+            })
+            // 按顺序排序
+            var final = empty.sort()
+
+            var objArr = []
+            var temArr = []
+            // 根据个数添加 空对象 空数组
+            for (var i = 0; i < num; i++) {
+                objArr.push({})
+                temArr.push([])
+            }
+
+
+            var bigArr = []
+            // 分别存入空对象 空数组
+            for (var i = 0; i < num; i++) {
+                for (var j = 0; j < arr.length; j++) {
+                    if (arr[j].py[0] === final[i]) {
+                        objArr[i].letter = arr[j].py[0].toUpperCase()
+                        temArr[i].push(arr[j])
+                    }
+                }
+            }
+
+            for (var i = 0; i < num; i++) {
+                objArr[i].citys = temArr[i].sort(function (a, b) {
+                    return a.id - b.id
+                })
+            }
+
+            objArr.forEach(function (value) {
+                bigArr.push(value)
+            })
+            return bigArr
+        }
+        // getJSON('https://apis.netstart.cn/maoyan/cities.json', function (res) {
+        //     // console.log(res);
+        //     console.log(parseCity(res.cts));
+        // })
+
+
+
+
+        $('button').on('click', function () {
+            $(this).addClass('active').siblings("button").removeClass('active')
+            var that = this
+            getJSON('https://apis.netstart.cn/maoyan/cities.json', function (res) {
+
+
+                var afterArr = parseCity(res.cts)
+                // console.log(afterArr);
+                document.querySelector('ul').innerHTML = ''
+                afterArr.forEach(function (value) {
+                    if (value.letter === that.innerText) {
+                        // console.log(value.citys);
+                        value.citys.forEach(function (value) {
+                            var linode = document.createElement('li')
+                            linode.innerText = value.nm;
+                            document.querySelector('ul').appendChild(linode)
+                        })
+                    }
+                })
+            })
+        })
+    </script>
+    <script>
+
+
+
+        function getJSON(url, callback) {
+            var xhr = new XMLHttpRequest()
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    callback(JSON.parse(xhr.response))
+                    // JSON.parse()  把字符串转换为json
+                    // JSON.stringify()  把json转为字符串
+
+                    // callback(xhr.response)
+                }
+            }
+            xhr.open("GET", url, true)
+            xhr.send()
+        }
+
+        // 同域访问数据
+        // getJSON('./03test.json', (res) => {
+        //     console.log(res);
+        // })
+
+        // 可以跨域访问 比如一些api文档  响应头加上了 access-control-allow-origin: （http://127.0.0.1:5500）括号里是根据访问用户的地址
+        // getJSON('https://apis.netstart.cn/maoyan/cities.json', function (res) {
+        //     console.log(res);
+        //     // console.log(parseCity(res.cts));
+        // })
+
+
+        // 利用插件跨域
+        // getJSON("https://www.baidu.com/sugrec?ie=utf-8&json=1&prod=pc&wd=王大锤", function (res) {
+        //     console.log(res);
+        // })
+
+        // has been blocked by CORS policy: No 'Access-Control-Allow-Origin'  跨域
+        // 跨域  => 协议 域名 端口 三个有一个不同就是跨域
+        // 1服务器允许跨域  2关闭同源策略（仅用于开发） 3.安装插件 EASY CORS
+
+        // CORS policy 同源策略
+
+
+
+        document.querySelector('input').oninput = _.debounce(inp, 500)//防抖
+
+        // 抓取匹配百度里的信息
+        function inp() {
+            getJSON('https://www.baidu.com/sugrec?ie=utf-8&json=1&prod=pc&wd=' + this.value, function (res) {
+                console.log(res);
+                document.querySelector('ul').innerHTML = ''
+                if (res.g) {
+                    res.g.forEach(function (obj) {
+                        var liNode = document.createElement('li')
+                        liNode.innerText = obj.q;
+                        document.querySelector('ul').appendChild(liNode)
+                    })
+                }
+            })
+        }
+
+        // 匹配猫眼电影里给的JSON里的地名
+        // function inp() {
+        //     // console.log(this);
+        //     var that = this
+        //     getJSON('https://apis.netstart.cn/maoyan/cities.json', function (res) {
+        //         document.querySelector('ul').innerHTML = ''
+        //         var afterArr = parseCity(res.cts)
+        //         // console.log(afterArr);
+        //         afterArr.forEach(function (value) {
+        //             if (value.citys) {
+        //                 value.citys.forEach(function (obj) {
+        //                     if (obj.nm.startsWith(that.value) && that.value != '') {
+        //                         var liNode = document.createElement('li')
+        //                         liNode.innerText = obj.nm;
+        //                         document.querySelector('ul').appendChild(liNode)
+        //                     }
+        //                     // if (obj.nm.includes(that.value) && that.value != '') {
+        //                     //     var liNode = document.createElement('li')
+        //                     //     liNode.innerText = obj.nm;
+        //                     //     document.querySelector('ul').appendChild(liNode)
+        //                     // }
+        //                 })
+
+        //             }
+        //         })
+
+        //     })
+        // }
+
+
+    </script>
+
+</body>
+
+</html>

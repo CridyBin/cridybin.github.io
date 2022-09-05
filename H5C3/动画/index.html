@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../b.png">
+    <title>动画</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(to right, #bb313e25, #bb313e25, #d7222925, #dd4a1625, #e4761525, #f5c50025, #f0e92725, #b1ce2425, #48a93525, #03944525, #157c4f25, #176a5825, #1b556325, #1d386f25, #1d386f25, #20277825, #52266325, #8a244b25)
+        }
+
+        div.bear {
+            position: relative;
+            width: 200px;
+            height: 100px;
+
+            background-color: rgba(0, 0, 0, .4);
+            background-image: url(./bear.png);
+            background-repeat: no-repeat;
+            /* margin: 100px auto; */
+            animation: bear 1s steps(8) infinite, bearmove 2s linear forwards;
+        }
+
+        @keyframes bear {
+            0% {
+                background-position: 0 0;
+            }
+
+            100% {
+                background-position: -1600px 0px;
+            }
+        }
+
+        @keyframes bearmove {
+            0% {
+                left: 0;
+            }
+
+            100% {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+
+        div.space {
+            width: 142.8px;
+            height: 177px;
+            /* position: relative; */
+            /* left: 50%; */
+            /* top: 200px; */
+            transform: translateX(-50%);
+            background-color: rgba(255, 255, 255, .4);
+            background-image: url(./space-to-top.png);
+            background-repeat: no-repeat;
+            animation: spacemove .8s steps(7) infinite;
+
+        }
+
+        @keyframes spacemove {
+            from {
+                background-position: 0 0;
+            }
+
+            to {
+                background-position: -1000px;
+            }
+        }
+
+        div.monster {
+            width: 80px;
+            height: 96px;
+            /* margin: 400px auto 0; */
+            background-color: rgba(255 255 255 / 40%);
+            background-image: url(./monster.png);
+            /* background-position-y: 0px; */
+            /* 向前走 */
+            /* background-position-y: -96px; */
+            /* 向左走 */
+            /* background-position-y: -192px; */
+            /* 向右走 */
+            /* background-position-y: -298px; */
+            /* 向后走  */
+            background-repeat: no-repeat;
+
+            animation: monstermove .8s steps(4) infinite;
+        }
+
+        @keyframes monstermove {
+            from {
+                background-position-x: 0;
+            }
+
+            to {
+                background-position-x: -320px;
+            }
+
+        }
+
+
+        /* 按钮 */
+        div.play {
+            width: 50px;
+            height: 50px;
+            background-color: white;
+            position: relative;
+            border-radius: 50%;
+            margin-left: 100px
+                /* margin: 100px auto; */
+        }
+
+        .p1,
+        .p2,
+        .p3,
+        .p4 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: lightblue;
+            border-radius: 50%;
+        }
+
+        @keyframes xxx {
+            from {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            to {
+                transform: scale(3);
+                opacity: 0;
+            }
+        }
+
+        .p1,
+        .p2,
+        .p3,
+        .p4 {
+            animation-name: xxx;
+            animation-duration: 4s;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-in-out;
+        }
+
+        .p1 {
+            animation-delay: 0s;
+
+        }
+
+        .p2 {
+            animation-delay: -1s;
+        }
+
+        .p3 {
+            animation-delay: -2s;
+        }
+
+        .p4 {
+            animation-delay: -3s;
+        }
+
+        .box {
+            width: 100%;
+            display: flex;
+            /* flex-direction: column; */
+            justify-content: center;
+            align-items: center;
+            margin-top: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bear"></div>
+    <div class="box">
+        <div class="space"></div>
+        <div class="monster"></div>
+        <div class="play">
+            <div class="p1"></div>
+            <div class="p2"></div>
+            <div class="p3"></div>
+            <div class="p4"></div>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./body五彩斑斓.css">
+    <link rel="shortcut icon" href="../b.png">
+    <title>九宫格抽奖</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        span {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        span img {
+            width: 60px;
+
+        }
+
+        .stage {
+            display: flex;
+            flex-wrap: wrap;
+            width: 320px;
+            height: 320px;
+            justify-content: space-between;
+            align-content: space-between;
+        }
+
+        .stage span,
+        .stage i {
+            border-radius: 10px;
+            box-shadow: 1px 1px 1px 1px rgb(118, 116, 116);
+            width: 100px;
+            height: 100px;
+            background-color: rgb(255, 255, 255);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            user-select: none;
+        }
+
+        .stage i {
+            text-align: center;
+
+            background-color: rgb(236, 26, 48);
+            color: #fff;
+            font-size: 22px;
+        }
+
+        .stage span:nth-child(1) {
+            order: 1;
+        }
+
+        .stage span:nth-child(2) {
+            order: 2;
+        }
+
+        .stage span:nth-child(3) {
+            order: 3;
+        }
+
+        .stage span:nth-child(8) {
+            order: 4;
+        }
+
+        .stage i {
+            order: 5;
+
+        }
+
+        .stage span:nth-child(4) {
+            order: 6;
+        }
+
+        .stage span:nth-child(7) {
+            order: 7;
+            /* pointer-events: ; */
+        }
+
+        .stage span:nth-child(6) {
+            order: 8;
+        }
+
+        .stage span:nth-child(5) {
+            order: 9;
+        }
+
+        .stage span.active {
+            background-color: rgb(202, 155, 79);
+        }
+
+        h2 {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100px;
+            padding: 10px;
+            box-sizing: border-box;
+            line-height: 100px;
+            user-select: none;
+        }
+
+        h3 {
+            display: inline-block;
+            font-size: 40px;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="stage">
+        <span class="手机"><img src="./images/telephone.jpg" alt=""> 手机</span>
+        <span class="平板"><img src="./images/ipad.jpg" alt=""> 平板</span>
+        <span class="电磁炉"><img src="./images/3.jpg" alt=""> 电磁炉</span>
+        <span class="洗衣机"><img src="./images/4.jpg" alt=""> 洗衣机</span>
+        <span class="衣柜"><img src="./images/6.jpg" alt=""> 衣柜</span>
+        <span class="衣柜"><img src="./images/10.jpg" alt=""> 冰箱</span>
+        <span class="电脑"><img src="./images/7.jpg" alt=""> 电脑</span>
+        <span class="电视"><img src="./images/8.jpg" alt=""> 电视</span>
+        <i style="cursor: pointer">马上抽奖</i>
+    </div>
+    <h2>您获得的奖品是<h3></h3>
+    </h2>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+    <script>
+        var spans = document.querySelectorAll('.stage span')
+
+        var start = document.querySelector('.stage i')
+
+        function showIndex(n) {
+            spans.forEach(function (value, index) {
+                if (n === index) {
+                    value.classList.add("active")
+                } else {
+                    value.classList.remove('active')
+                }
+            })
+        }
+        start.onclick = begin
+
+
+
+        function begin() {
+            var num = Math.floor(Math.random() * 8)
+            this.style.pointerEvents = 'none';
+            var that = this
+            function showNext(n, time) {
+                setTimeout(function () {
+                    showIndex(n % 8);
+                    n++
+
+                    if (n < 8) {
+                        time -= 35
+                    }
+                    if (n > 16) {
+                        time += 50
+                    }
+
+                    if (n <= 24 + num) {
+                        showNext(n, time)
+                    } else {
+                        // console.log(num, spans[num].innerText);
+                        // alert("恭喜您获得:" + spans[num].innerText)
+                        document.querySelector('h3').innerText = spans[num].classList[0]
+                        that.style.pointerEvents = 'auto';
+
+                    }
+
+                }, time)
+            }
+            showNext(0, 300)
+        }
+
+
+    </script>
+
+</body>
+
+</html>

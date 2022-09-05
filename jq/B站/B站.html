@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="../b.png">
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <title>B站小剧场</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 1000% 1000%;
+            animation: gradient 15s ease infinite;
+            padding: 100px 30px;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100vh;
+        }
+
+        .box {
+
+            /* background-color: pink; */
+            background: url(./486142478_dc4dcb-0002.jpg) no-repeat;
+
+            background-position: 0px 0px;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        div.text {
+            position: absolute;
+            display: block;
+            width: 300px;
+            top: 15px;
+            font-size: 12px;
+            color: white;
+            z-index: 22;
+            left: 520px;
+            pointer-events: none;
+
+
+        }
+
+        .mask {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, .4);
+            display: flex;
+            justify-content: center;
+            transition: all linear;
+            pointer-events: none;
+        }
+
+        .top {
+            width: 460px;
+            height: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: black;
+        }
+
+        .wrap {
+            width: 460px;
+            height: 2px;
+            background-color: gray;
+        }
+
+        .slider {
+            /* width: 150px; */
+            height: 2px;
+            background-color: white;
+        }
+
+        .time {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 20px;
+            background-color: rgba(0, 0, 0, .3);
+            color: white;
+            line-height: 20px;
+            text-align: center;
+
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 163px -->
+
+    <div class="box">
+        <div class="mask">
+            <div class="top">
+                <div class="wrap">
+                    <div class="slider"></div>
+                </div>
+            </div>
+            <div class="time"></div>
+        </div>
+
+    </div>
+
+    <script>
+        // https://www.bilibili.com/anime/?spm_id_from=333.1007.0.0
+        var pvideo = {
+            duration: 1303,
+            img_x_len: 10,
+            img_y_len: 10,
+            img_x_size: 480,
+            img_y_size: 270,
+            image: [
+                "//bimp.hdslb.com/videoshotpvhdboss/486142478_dc4dcb-0001.jpg",
+                "//bimp.hdslb.com/videoshotpvhdboss/486142478_dc4dcb-0002.jpg",
+            ],
+            index: [
+                0, 0, 8, 14, 20, 25, 31, 39, 50, 61, 67, 73, 80, 87, 93, 104, 116, 126, 132, 138, 144, 152, 159, 170, 177,
+                186, 196, 207, 215, 224, 231, 238, 244, 249, 255, 260, 265, 271, 278, 283, 290, 297, 303, 311, 319, 330, 335,
+                350, 360, 365, 372, 383, 390, 401, 406, 411, 421, 428, 434, 444, 450, 457, 467, 472, 481, 487, 497, 502, 514,
+                520, 534, 542, 547, 555, 562, 568, 575, 581, 587, 592, 598, 605, 610, 615, 621, 633, 642, 650, 658, 668, 677,
+                690, 696, 702, 709, 715, 720, 733, 740, 746, 751, 759, 767, 776, 782, 790, 798, 804, 814, 826, 833, 840, 850,
+                856, 863, 872, 878, 886, 896, 903, 911, 918, 929, 937, 948, 953, 959, 965, 973, 979, 985, 994, 1001, 1015,
+                1022, 1028, 1034, 1040, 1047, 1059, 1064, 1071, 1077, 1084, 1090, 1099, 1105, 1111, 1121, 1130, 1139, 1150,
+                1156, 1162, 1171, 1178, 1184, 1191, 1197, 1203, 1210, 1216, 1221, 1228, 1233, 1242, 1250, 1260, 1272, 1282,
+                1292, 1297,
+            ],
+        };
+
+    </script>
+
+    <script>
+
+
+        var dm = [
+            "章鱼哥还是没有胜过强风暴雨(doge)",
+            "日本裁判",
+            "日本裁判",
+            "海绵宝宝笑死我了",
+            "黑人小哥",
+            "堡垒之夜",
+            "最喜欢的一集",
+            "最喜欢的一集",
+            "喜欢",
+            "我怎么觉得派大星这个配音我在神奇宝贝里听过",
+            "我看见你了",
+            "但凡章鱼哥早点回去都不至于这样",
+            "这……这我还真有可能“模仿”",
+            "为什么非要执着于台配或者央配呢",
+            "派总依旧稳定输出",
+            "包租公～",
+            "为什么台配的海绵宝宝跟低能儿似的",
+            "井字游戏，其实可以先手必胜的",
+            "我小时候就看的台配",
+            "终于找到了",
+        ];
+
+
+        // 百分比 用index里的数据
+        function changeImg(pointX) {
+            var pointPer = pointX / pvideo.img_x_size
+            var index = 0;
+            // console.log();
+            for (let i = 0; i < pvideo.index.length; i++) {
+                if (pvideo.index[i] / pvideo.duration >= pointPer) {
+                    index = i
+                    break;
+                }
+            }
+            if (index < 71) {
+                var x = index % pvideo.img_x_len
+                var y = parseInt(index / pvideo.img_y_len)
+                $('.box').css({
+                    background: 'url(./486142478_dc4dcb-0002.jpg) no-repeat',
+                    backgroundPosition: -x * pvideo.img_x_size + 'px ' + y * -pvideo.img_y_size + 'px'
+                })
+            } else if (index < pvideo.index.length) {
+                var x = index % pvideo.img_x_len
+                var y = parseInt((index - 71) / pvideo.img_y_len)
+                $('.box').css({
+                    background: 'url(./486142478_dc4dcb-0001.jpg) no-repeat',
+                    backgroundPosition: -x * pvideo.img_x_size + 'px ' + y * -pvideo.img_y_size + 'px'
+                })
+            }
+        }
+
+
+        // 图片的播放顺序不同
+        // function changeImg(pointX) {
+        //     var pointPer = pointX / pvideo.img_x_size
+        //     var index = 0;
+        //     // console.log();
+        //     for (let i = 0; i < pvideo.index.length; i++) {
+        //         if (pvideo.index[i] / pvideo.duration >= pointPer) {
+        //             index = i
+        //             break;
+        //         }
+        //     }
+        //     if (index < 100) {
+        //         var x = index % pvideo.img_x_len
+        //         var y = parseInt(index / pvideo.img_y_len)
+        //         $('.box').css({
+        //             background: 'url(./486142478_dc4dcb-0001.jpg) no-repeat',
+        //             backgroundPosition: -x * pvideo.img_x_size + 'px ' + y * -pvideo.img_y_size + 'px'
+        //         })
+        //     } else if (index <= pvideo.index.length) {
+        //         var x = index % pvideo.img_x_len
+        //         var y = parseInt((index - 100) / pvideo.img_y_len)
+        //         $('.box').css({
+        //             background: 'url(./486142478_dc4dcb-0002.jpg) no-repeat',
+        //             backgroundPosition: -x * pvideo.img_x_size + 'px ' + y * -pvideo.img_y_size + 'px'
+        //         })
+        //     }
+        // }
+
+
+
+
+
+
+        // 用171 470  丝滑版 没有用到index里的数据
+        // pointX是鼠标在盒子的水平距离
+        // function changeImg(pointX) {
+        //     var c = pvideo.index.length / pvideo.img_x_size
+        //     var imgIndex = Math.floor(c * pointX)
+        //     // console.log(imgIndex);
+        //     if (imgIndex < 100) {
+        //  // x 是取x轴方向 图片的位置 比如第几列
+        //         var x = imgIndex % 10
+        // // y是图片y轴的位置  比如第几行
+        //         var y = parseInt(imgIndex / 10)
+        //         $('.box').css({
+        //             background: 'url(./486142478_dc4dcb-0001.jpg) no-repeat',
+        //             backgroundPosition: -x * 480 + 'px ' + y * -270 + 'px'
+        //         })
+        // //这里做了一个切换图片
+        //     } else if (imgIndex <= pvideo.index.length) {
+        //         var x = imgIndex % 10
+        //         var y = parseInt((imgIndex - 100) / 10)
+        //         $('.box').css({
+        //             background: 'url(./486142478_dc4dcb-0002.jpg) no-repeat',
+        //             backgroundPosition: -x * 480 + 'px ' + y * -270 + 'px'
+        //         })
+        //     }
+        // }
+
+
+
+
+        // 次等品
+        // function changeImg(pointX) {
+        //     var c = pvideo.duration / pvideo.img_x_size
+        //     var cc = Math.floor(pointX * c)
+        //     if (pvideo.index.indexOf(cc) < 100) {
+        //         if (pvideo.index.includes(cc)) {
+        //             var index = pvideo.index.indexOf(cc)
+        //             var x = index % 10
+        //             var y = parseInt(index / 10)
+        //             // console.log(x, y);
+        //             $('.box').css({
+        //                 background: 'url(./486142478_dc4dcb-0001.jpg) no-repeat',
+        //                 backgroundPosition: -x * 480 + 'px ' + y * -270 + 'px'
+        //             })
+        //         }
+        //     } else if (pvideo.index.indexOf(cc) < pvideo.index.length) {
+        //         if (pvideo.index.includes(cc)) {
+        //             var index = pvideo.index.indexOf(cc) - 99
+        //             var x = index % 10
+        //             var y = parseInt(index / 10)
+        //             // console.log(x, y);
+        //             $('.box').css({
+        //                 background: 'url(./486142478_dc4dcb-0002.jpg) no-repeat',
+        //                 backgroundPosition: -x * 480 + 'px ' + y * -270 + 'px'
+        //             })
+        //         }
+        //     }
+        // }
+
+
+
+        // 残次品
+        // function changeImg(index) {
+        //     var d = pvideo.duration / pvideo.img_x_size
+        //     var dd = Math.floor(d * index)
+        //     console.log(dd, index);
+        //     if (pvideo.index.indexOf(dd) < 85) {
+        //         var x = index % 10
+        //         var y = parseInt(index / 100)
+        //         if (pvideo.index.includes(dd)) {
+        //             $('.box').css({
+        //                 background: 'url(./486142478_dc4dcb-0002.jpg) no-repeat',
+        //                 backgroundPosition: -x * 480 + 'px ' + y * -270 + 'px'
+        //             })
+        //         }
+        //     } else if (pvideo.index.indexOf(dd) >= 85) {
+        //         var x = (index - 240) % 10
+        //         var y = parseInt((index - 240) / 100)
+        //         if (pvideo.index.includes(dd)) {
+        //             $('.box').css({
+        //                 background: 'url(./486142478_dc4dcb-0001.jpg) no-repeat',
+        //                 backgroundPosition: -x * 480 + 'px ' + y * -270 + 'px'
+        //             })
+        //         }
+        //     }
+        // }
+
+
+
+
+
+
+        // 设置box 宽高
+
+        $('.box').css({
+            width: pvideo.img_x_size,
+            height: pvideo.img_y_size
+        })
+        // 计算时间 设置时间
+        var mm = parseInt(pvideo.duration / 60)
+        var ss = pvideo.duration % 60
+        $('.time').text(mm + ':' + ss)
+
+        var id
+        $('.mask').fadeOut()
+
+
+
+        function createDanmu() {
+            var node = document.createElement('div')
+            node.className = 'text'
+            node.style.top = Math.round(Math.random() + 1) * 15 + 'px'
+
+            var randomText = dm[Math.floor(Math.random() * dm.length)]
+            // console.log(randomText);
+            node.innerText = randomText
+            $('.box').append(node)
+            var time
+            if (randomText.length < 5) {
+                time = 7500
+            } else if (randomText < 10) {
+                time = 6000
+            } else {
+                time = 6000
+            }
+            var spanWidth = node.offsetWidth
+            $(node).animate({ left: -spanWidth - 20 }, time, function () {
+                this.remove()
+            })
+        }
+
+
+        $('.box').mouseover(function () {
+
+            $('.mask').fadeIn()
+            setTimeout(function () {
+                createDanmu()
+            }, 0)
+
+            id = setInterval(function () {
+                createDanmu()
+            }, 1000)
+
+        })
+        $('.box').mouseout(function () {
+            $('.mask').fadeOut()
+            $('div.text').remove()
+            clearInterval(id)
+            id = null
+            changeImg(0)
+        })
+
+        document.querySelector('.box').onmousemove = function (e) {
+            changeImg(e.offsetX)
+            var sliderWidth = e.offsetX / pvideo.img_x_size * $('.wrap').width()
+            $('.slider').css({
+                width: sliderWidth
+            })
+        }
+
+
+    </script>
+</body>
+
+</html>

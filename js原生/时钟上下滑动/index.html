@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../b.png">
+    <title>时钟</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 99%;
+            height: 100%;
+            background: linear-gradient(to right, #ff9569 0%, #e92758 100%);
+
+        }
+
+        section {
+            height: 400px;
+            display: flex;
+            margin-right: 20px;
+            align-items: center;
+        }
+
+        section div {
+            width: 50px;
+            height: 100px;
+            /* background-color: lightblue; */
+
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+
+            /* box-shadow: 0 0 5px 0 black; */
+            border: 1px solid #ccc;
+        }
+
+        section div span {
+            width: 100%;
+            height: 100px;
+            background-color: rgba(0, 0, 0, .5);
+
+            background-size: cover;
+            background-repeat: no-repeat;
+            flex-shrink: 0;
+            transition: all 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 60px;
+            color: white;
+
+        }
+    </style>
+</head>
+
+<body>
+    <section class="hours">
+        <div class="ten">
+            <span>0</span>
+        </div>
+        <div class="single">
+            <span>0</span>
+        </div>
+    </section>
+    <section class="minutes">
+        <div class="ten">
+            <span>0</span>
+        </div>
+        <div class="single">
+            <span>0</span>
+        </div>
+    </section>
+    <section class="seconds">
+        <div class="ten">
+            <span>0</span>
+        </div>
+        <div class="single">
+            <span>0</span>
+        </div>
+    </section>
+
+    <!-- <script>
+        var ten = document.querySelector(".ten")
+        var single = document.querySelector(".single")
+        var date = new Date()
+        console.log(date.getSeconds());
+        function change() {
+            // if () { }
+        }
+
+
+    </script> -->
+
+    <script>
+        setInterval(function () {
+            var now = new Date()
+            // padStart 补零 目标长度2 不够的话补0 对字符串操作
+            var hh = String(now.getHours()).padStart(2, "0")
+            var mm = String(now.getMinutes()).padStart(2, "0")
+            var ss = String(now.getSeconds()).padStart(2, "0")
+
+            var hours = document.querySelector(".hours")
+            var minutes = document.querySelector(".minutes")
+            var seconds = document.querySelector(".seconds")
+
+
+            hours.querySelectorAll("div").forEach(function (ele, i) {
+                showNewNum(ele, hh[i])
+            })
+            minutes.querySelectorAll("div").forEach(function (ele, i) {
+                showNewNum(ele, mm[i])
+            })
+            seconds.querySelectorAll("div").forEach(function (ele, i) {
+                showNewNum(ele, ss[i])
+            })
+
+
+        }, 1000)
+
+        function showNewNum(ele, n) {
+            // 取到传入元素的第一个span
+            var firstSpan = ele.getElementsByTagName("span")[0]
+            // 判断第一个span内的内容与传入的参数n 是否相等
+            if (firstSpan.innerText !== n) {
+                // 创建新span
+                var newSpan = document.createElement("span")
+                // 插入数值
+                newSpan.innerText = n
+                // 追加到后面
+                ele.appendChild(newSpan)
+                // 向上滑动
+                firstSpan.style.marginTop = "-100px"
+
+                // 动画效果结束 删除第一个子元素
+                setTimeout(() => {
+                    ele.removeChild(firstSpan)
+                    // console.log(ele.removeChild(firstSpan));
+                }, 300);
+
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

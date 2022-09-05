@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../b.png">
+
+    <title>王者荣耀</title>
+    <script src="js/jQuery.min.js"></script>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 1000% 1000%;
+            animation: gradient 15s ease infinite;
+            padding: 100px 30px;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            display: block;
+        }
+
+        .king {
+            width: 730px;
+            margin: 100px auto;
+            background: url(img/bg.png) no-repeat;
+            overflow: hidden;
+            /* padding: 20px; */
+            padding: 10px;
+            padding-top: 0;
+            position: relative;
+
+        }
+
+        .king ul {
+            overflow: hidden;
+        }
+
+        .king li {
+            position: relative;
+            float: left;
+            width: 69px;
+            height: 69px;
+            margin-right: 10px;
+        }
+
+        .king li.current {
+            width: 224px;
+        }
+
+        .king li.current .big {
+            display: block;
+        }
+
+        .king li.current .small {
+            display: none;
+        }
+
+        .big {
+            width: 224px;
+            display: none;
+        }
+
+        .small {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 69px;
+            height: 69px;
+            border-radius: 5px;
+        }
+
+        .king p {
+            font-size: 14px;
+            margin-bottom: 5px;
+            color: #a6afbc;
+            font-weight: 700;
+        }
+
+        .more {
+            width: 20px;
+            height: 54px;
+            /* background-color: pink; */
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            line-height: 16px;
+            color: #a6afbc;
+            transform: translateY(-50%);
+
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 分析
+    1、鼠标经过某个小li 有两步操作：
+    2、当前小li宽度变为224px，同时里面的小图片淡出，大图片淡入
+    3、其余兄弟小li宽度变为69px，小图片淡入，大图片淡出
+-->
+    <script type="text/javascript">
+        $(function () {
+            // 1、鼠标经过某个小li 有两步操作：
+            $(".king li").mouseenter(function () {
+                // 2、当前小li宽度变为224px，同时里面的小图片淡出，大图片淡入
+                $(this).stop().animate({
+                    width: 224
+                }).find(".small").stop().fadeOut().siblings(".big").fadeIn();
+                // 3、其余兄弟小li宽度变为69px，小图片淡入，大图片淡出
+                $(this).siblings("li").stop().animate({
+                    width: 69
+                }).find(".small").stop().fadeIn().siblings(".big").stop().fadeOut();
+            })
+        })
+    </script>
+    <div class="king">
+        <p>周免英雄（8月15日-8月21日）</p>
+        <ul>
+            <li class="current">
+                <a href="#">
+                    <img src="img/m1.jpg" alt="" class="small">
+                    <img src="img/m.png" alt="" class="big">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="img/l1.jpg" alt="" class="small">
+                    <img src="img/l.png" alt="" class="big">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="img/c1.jpg" alt="" class="small">
+                    <img src="img/c.png" alt="" class="big">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="img/t1.jpg" alt="" class="small">
+                    <img src="img/t.png" alt="" class="big">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="img/w1.jpg" alt="" class="small">
+                    <img src="img/w.png" alt="" class="big">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="img/z1.jpg" alt="" class="small">
+                    <img src="img/z.png" alt="" class="big">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="img/h1.jpg" alt="" class="small">
+                    <img src="img/h.png" alt="" class="big">
+                </a>
+            </li>
+
+        </ul>
+        <div class="more">更多英雄</div>
+    </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,150 @@
+img.headImg {
+  width: 375rem;
+  height: 52rem;
+}
+body {
+  font-size: 13.5rem;
+  margin: 0;
+}
+.app-header-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 3rem;
+  background-color: #f2f2f2;
+}
+.app-header-wrapper .app-header-left {
+  width: 52rem;
+  height: 29rem;
+  text-align: center;
+}
+.app-header-wrapper .app-header-left img {
+  display: inline-block;
+  width: 26.5rem;
+  height: 26.5rem;
+}
+.app-header-wrapper .app-header-search {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  width: 271rem;
+  height: 33rem;
+  line-height: 33rem;
+  background-color: #f6f9fb;
+  font-size: 15rem;
+  color: grey;
+}
+.app-header-wrapper .app-header-search i {
+  font-size: 20rem;
+  line-height: 31rem;
+  width: 31rem;
+  height: 31rem;
+}
+.app-header-wrapper .app-header-right {
+  width: 52rem;
+  height: 31rem;
+  text-align: center;
+}
+.app-header-wrapper .app-header-right i {
+  display: block;
+  width: 52rem;
+  height: 100%;
+  text-align: middle;
+  line-height: 31rem;
+  font-size: 20.8rem;
+}
+.nav {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  background-color: #f2f2f2;
+}
+.nav a {
+  text-decoration: none;
+  color: gray;
+  display: block;
+  width: 53rem;
+  height: 30.5rem;
+  line-height: 30.5rem;
+}
+.nav i {
+  color: gray;
+  position: absolute;
+  right: 5rem;
+  bottom: 10rem;
+}
+.banner {
+  width: 375rem;
+  height: 187rem;
+  background-image: url(images/banner.jpeg);
+  background-size: cover;
+}
+.cell {
+  display: flex;
+  width: 375rem;
+}
+.cell img {
+  display: block;
+  width: 75rem;
+  height: 80rem;
+}
+.k50 {
+  width: 375rem;
+  height: 275rem;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8rem;
+}
+.k50 .l {
+  width: 186.5rem;
+  height: 275rem;
+}
+.k50 .l img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.k50 .r {
+  width: 186.5rem;
+  height: 275rem;
+}
+.k50 .r img {
+  width: 100%;
+  height: 49.5%;
+}
+.k40 {
+  width: 375rem;
+  height: 229rem;
+}
+.k40 img {
+  width: 100%;
+  height: 100%;
+}
+.phoneSale {
+  width: 375rem;
+  width: 255rem;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+.phoneSale .left {
+  width: 175rem;
+}
+.phoneSale .left img {
+  display: block;
+  width: 175rem;
+  height: 146rem;
+}
+.phoneSale .left .info {
+  box-sizing: border-box;
+  padding: 8rem 15rem;
+}
+.phoneSale .right {
+  width: 175rem;
+}
+.phoneSale .right img {
+  display: block;
+  width: 175rem;
+  height: 146rem;
+}
+/*# sourceMappingURL=./style.css.map */

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./minireset.css">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="./index.css">
+    <title>CridyBin作品展示</title>
+
+    <style>
+        @media screen and (max-width:996px) {
+            .header {
+                display: block;
+            }
+
+            .sidebar {
+                display: none;
+            }
+
+            .detail {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <aside class="sidebar">
+        <div class="img">
+            <img src="./1.jpg" alt="">
+            <div class="rotate"></div>
+        </div>
+        <p class="name">CridyBin <i class="fa fa-user"></i></p>
+        <ul class="menu">
+            <li><a href="#one">资料</a></li>
+            <li><a href="#two">技能</a></li>
+            <li><a href="">作品</a></li>
+            <li><a href="">经历</a></li>
+        </ul>
+    </aside>
+    <div class="header">
+        <div class="img">
+            <img src="./1.jpg" alt="">
+            <div class="rotate"></div>
+        </div>
+        <p class="name">CridyBin <i class="fa fa-user"></i></p>
+        <ul class="menu">
+            <li><a href="#one">资料</a></li>
+            <li><a href="#two">技能</a></li>
+            <li><a href="">作品</a></li>
+            <li><a href="">经历</a></li>
+        </ul>
+    </div>
+    <main class="detail">
+        <section class="info" id="info">
+            <div class="wrap">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h2 class="title"><i class="fa fa-address-card"></i>个人资料</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>姓名：蔡加斌</p>
+                        <p>籍贯：广东汕尾</p>
+                        <p>年龄：23岁</p>
+                        <p>学历：本科</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>QQ：2631427287</p>
+                        <p>Github:https://cridybin.github.io</p>
+                        <p>邮箱：2631427287@qq.com</p>
+                        <p>现住：广州增城</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="skills" id="skills">
+            <div class="wrap">
+                <h2 class="title"><i class="fa fa-wrench"></i>掌握的技能</h2>
+                <ul class="row tec">
+                    <li class="col-xs-4 col-md-2">
+                        <div class="img">
+                            <i class="fa fa-html5"></i>
+                        </div>
+                        <h1>HTML5</h1>
+                        <p>熟悉使用HTML5网站的架构和开发</p>
+                    </li>
+                    <li class="col-xs-4 col-md-2">
+                        <div class="img">
+                            <i class="fa fa-css3"></i>
+                        </div>
+                        <h1>CSS3</h1>
+                        <p>熟悉使用 CSS3 写响应式网站、 动画等</p>
+                    </li>
+                    <li class="col-xs-4 col-md-2">
+                        <div class="img">
+                            <i class="fa fa-code"></i>
+                        </div>
+                        <h1>JavaScript</h1>
+                        <p>熟练使用 JS 制作程序、 交互与特效</p>
+                    </li>
+                    <li class="col-xs-4 col-md-2">
+                        <div class="img">
+                            <i class="fa fa-bold"></i>
+                        </div>
+                        <h1>BootStrap</h1>
+                        <p>熟练操作BootStrap搭建 页面和框架等</p>
+                    </li>
+                    <li class="col-xs-4 col-md-2">
+                        <div class="img">
+                            <!-- <img src="./jq.jpg" alt=""> -->
+                            <i>Jq</i>
+                        </div>
+                        <h1>jQuery</h1>
+                        <p>熟练使用JQ制作、用户交互效果</p>
+                    </li>
+                    <li class="col-xs-4 col-md-2">
+                        <div class="img">
+                            <i class="fa fa-vimeo-square "></i>
+                        </div>
+                        <h1>VUE</h1>
+                        <p>熟悉VUE搭建框架</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="works" id="works">
+            <div class="wrap">
+                <h2 class="title"><i class="fa  fa-trophy"></i>个人作品</h2>
+                <div class="vue row">
+                    <h2>Vue</h2>
+                </div>
+                <div class="htmlCss row">
+                    <h2>HTML&CSS</h2>
+
+                </div>
+                <div class="Javascript row">
+                    <h2>Javascript</h2>
+
+                </div>
+                <div class="bootstrap row">
+                    <h2>Bootstrap</h2>
+                </div>
+                <div class="jquery row">
+                    <h2>jQuery</h2>
+                </div>
+                <div class="H5C3 row">
+                    <h2>H5C3</h2>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script>
+        // console.log($);
+        function createA(domName, arr) {
+            var dom = document.querySelector(domName)
+            arr.forEach(element => {
+                var a = document.createElement('a')
+                var img = document.createElement('img')
+                var h3 = document.createElement('h3')
+                a.href = element.url
+                a.className = "work col-sm-6"
+                img.src = element.pic
+                h3.innerText = element.title
+                h3.className = "workName"
+                a.appendChild(img)
+                a.appendChild(h3)
+                dom.appendChild(a)
+            })
+
+        }
+
+        $.ajax({
+            method: "get",
+            url: './works.json',
+            data: {},
+            success: function (res) {
+                // console.log(res);
+                console.log(res.html);
+
+                createA('.htmlCss', res.html)
+                createA('.Javascript', res.javascript)
+                createA('.bootstrap', res.bootstrap)
+                createA('.jquery', res.jq)
+                createA('.H5C3', res.h5c3)
+
+            }
+        })
+    </script>
+</body>
+
+</html>

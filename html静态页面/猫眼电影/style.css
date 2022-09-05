@@ -1,0 +1,135 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.container {
+  width: 375px;
+  margin: 0 auto;
+  background-color: #ccc;
+}
+.container .head {
+  position: relative;
+  width: 100%;
+  height: 60px;
+  background-color: #e64847;
+  display: flex;
+  justify-content: center;
+}
+.container .head h1 {
+  line-height: 60px;
+  font-size: 22px;
+  color: white;
+  font-weight: normal;
+}
+.container .head ul {
+  position: absolute;
+  right: 10px;
+  top: 49%;
+  transform: translateY(-51%);
+}
+.container .head ul li {
+  list-style: none;
+  width: 20px;
+  height: 3px;
+  background-color: white;
+  margin-top: 5px;
+}
+.container .dianping {
+  padding: 10px;
+  background-color: white;
+  height: 200px;
+}
+.container .dianping .good {
+  font-size: 18px;
+  padding-bottom: 10px;
+}
+.container .dianping .movie {
+  display: flex;
+  justify-content: space-between;
+}
+.container .dianping .movie .pic {
+  width: 24%;
+  height: 120px;
+  background-color: pink;
+  position: relative;
+}
+.container .dianping .movie .pic img {
+  width: 100%;
+  height: 100%;
+}
+.container .dianping .movie .pic p {
+  margin-top: 5px;
+  font-weight: 700;
+  background-color: white;
+}
+.container .dianping .movie .pic p.socre {
+  position: absolute;
+  background-color: transparent;
+  font-size: 14px;
+  color: orange;
+  left: 0;
+  bottom: 2px;
+}
+.container .detail .one {
+  padding: 10px 0;
+  display: flex;
+  position: relative;
+  background-color: white;
+}
+.container .detail .one img {
+  width: 70px;
+}
+.container .detail .one .right {
+  padding-left: 10px;
+}
+.container .detail .one .right h1 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+.container .detail .one .right h1 img {
+  height: 14px;
+  width: 40px;
+}
+.container .detail .one .right p {
+  color: gray;
+}
+.container .detail .one .right p span {
+  color: orange;
+}
+.container .detail .one .right button {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 15px;
+  color: white;
+  background-color: #ed3d3a;
+}
+.container footer {
+  margin-top: 5px;
+  padding-top: 10px;
+  background-color: white;
+}
+.container footer ul {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+}
+.container footer li {
+  text-align: center;
+  width: 20%;
+}
+.container footer li img {
+  width: 40px;
+  height: 40px;
+}
+.container footer li i {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  font-size: 26px;
+}
+/*# sourceMappingURL=./style.css.map */
