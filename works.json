@@ -140,7 +140,7 @@
     "h5c3": [
         {
             "url": "http://cridybin.github.io/H5C3/3d图表/",
-            "pic": "./images/3d图表.png",
+            "pic": "./images/3D图表.png",
             "title": "3d图表"
         },
         {
@@ -162,11 +162,6 @@
             "url": "http://cridybin.github.io/H5C3/小米手机rem/",
             "pic": "./images/小米手机rem.png",
             "title": "小米手机rem"
-        },
-        {
-            "url": "http://cridybin.github.io/H5C3/动画/",
-            "pic": "./images/动画.png",
-            "title": "动画"
         },
         {
             "url": "http://cridybin.github.io/H5C3/音乐播放器2/",
