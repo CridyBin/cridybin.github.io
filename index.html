@@ -176,22 +176,22 @@
     <script>
         // console.log($);
         function createA(domName, arr) {
-            var dom = document.querySelector(domName)
+            var dom = document.querySelector(domName);
             arr.forEach(element => {
-                var a = document.createElement('a')
-                var img = document.createElement('img')
-                var h3 = document.createElement('h3')
-                a.href = element.url
-                a.target = "_blank"
-                a.className = "work col-sm-6"
-                img.src = element.pic
+                var a = document.createElement('a');
+                var img = document.createElement('img');
+                var h3 = document.createElement('h3');
+                a.href = element.url;
+                a.target = "_blank";
+                a.className = "work col-sm-6";
+                img.src = element.pic;
 
-                h3.innerText = element.title
-                h3.className = "workName"
-                a.appendChild(img)
-                a.appendChild(h3)
-                dom.appendChild(a)
-            })
+                h3.innerText = element.title;
+                h3.className = "workName";
+                a.appendChild(img);
+                a.appendChild(h3);
+                dom.appendChild(a);
+            });
 
         }
 
@@ -203,11 +203,11 @@
                 // console.log(res);
                 console.log(res.html);
 
-                createA('.htmlCss', res.html)
-                createA('.Javascript', res.javascript)
-                createA('.bootstrap', res.bootstrap)
-                createA('.jquery', res.jq)
-                createA('.H5C3', res.h5c3)
+                createA('.htmlCss', res.html);
+                createA('.Javascript', res.javascript);
+                createA('.bootstrap', res.bootstrap);
+                createA('.jquery', res.jq);
+                createA('.H5C3', res.h5c3);
 
             }
         })
