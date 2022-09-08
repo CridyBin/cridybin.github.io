@@ -135,6 +135,11 @@
             "url": "http://cridybin.github.io/jq/B站番剧/",
             "pic": "./images/B站番剧.png",
             "title": "B站番剧"
+        },
+        {
+            "url": "http://cridybin.github.io/jq/三级联动/",
+            "pic": "./images/三级联动.png",
+            "title": "三级联动"
         }
     ],
     "h5c3": [

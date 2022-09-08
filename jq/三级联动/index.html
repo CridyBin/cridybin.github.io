@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="title">
+        <span>省/直辖市</span>
+        <span>直辖市/市</span>
+        <span>县/区</span>
+    </div>
+    <div class="wrap">
+
+        <ul id="province"></ul>
+        <ul id="city"></ul>
+        <ul id="urban"></ul>
+    </div>
+    <div class="address" style="width: 1000px;text-align:center;margin:0 auto;font-size: 24px;margin-top: 50px;">
+
+    </div>
+    <!-- <script src="./jQuery.min.js"></script> -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+    <script>
+        var province = [];
+        var shi = [];
+        var qu = [];
+
+        function address() {
+            // console.log($('.active').text());
+            $('.address').text($('.active').text());
+        }
+
+        function check(arr, num, newObj) {
+            var obj = {};
+            for (var i = 0; i < arr.length; i++) {
+                if (parseInt(arr[i]).toString().length == num) {
+                    var str = parseInt(arr[i]).toString();
+                    obj[str] = arr[i].slice(arr[i].indexOf(":") + 1);
+                    // console.log(obj);
+                    newObj.push(obj);
+                }
+                // console.log(parseInt(res[i]));
+            }
+            // console.log(province);
+            return newObj[0];
+        }
+        function find(obj, start) {
+            var arr = [];
+            var obj1 = {};
+            for (i in obj) {
+                // if()
+                obj1 = {};
+                if (i.startsWith(start)) {
+                    obj1[i] = obj[i];
+                    arr.push(obj1);
+                }
+            }
+            return arr;
+        }
+        $.get('./prov-country.json', function (res) {
+            var sheng = check(res, 2, province);
+            // console.log(sheng);
+            var city = check(res, 4, shi);
+            // console.log(city);
+            var urban_area = check(res, 6, qu);
+            // console.log(urban_area);
+            for (i in sheng) {
+                var li = document.createElement('li');
+                li.innerText = sheng[i];
+                li.id = i;
+                document.querySelector('#province').appendChild(li);
+            }
+            $('#province').click(function (e) {
+                if (e.target.nodeName === "LI") {
+                    $('#city').empty();
+                    $('#urban').empty();
+                    $(e.target).addClass('active').siblings().removeClass();
+                    var cityArr = find(city, e.target.id.toString());
+                    for (var i = 0; i < cityArr.length; i++) {
+                        for (j in cityArr[i]) {
+                            var li = document.createElement('li');
+                            li.id = j;
+                            li.innerText = cityArr[i][j];
+                            document.querySelector('#city').appendChild(li);
+                        }
+                    }
+                    address();
+                }
+            });
+            $('#city').click(function (e) {
+                if (e.target.nodeName === "LI") {
+                    $('#urban').empty();
+                    $(e.target).addClass('active').siblings().removeClass();
+                    var urban_areaArr = find(urban_area, e.target.id.toString());
+                    // console.log(urban_areaArr);
+                    for (var i = 0; i < urban_areaArr.length; i++) {
+                        for (j in urban_areaArr[i]) {
+                            var li = document.createElement('li');
+                            li.innerText = urban_areaArr[i][j];
+                            document.querySelector('#urban').appendChild(li);
+                        }
+                    }
+                    address();
+                }
+            });
+
+            $('#urban').click(function (e) {
+                if (e.target.nodeName == "LI") {
+                    $(e.target).addClass('active').siblings().removeClass();
+                }
+                address();
+
+
+            });
+        })
+    </script>
+</body>
+
+</html>
