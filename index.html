@@ -162,6 +162,7 @@
                     <h2>H5C3</h2>
                 </div>
 
+
             </div>
         </section>
         <section class="experience" id="experience">
@@ -202,13 +203,13 @@
             data: {},
             success: function (res) {
                 // console.log(res);
-                console.log(res.html);
-
+                // console.log(res.html);
                 createA('.htmlCss', res.html);
                 createA('.Javascript', res.javascript);
                 createA('.bootstrap', res.bootstrap);
                 createA('.jquery', res.jq);
                 createA('.H5C3', res.h5c3);
+                createA('.vue', res.vue);
 
             }
         })

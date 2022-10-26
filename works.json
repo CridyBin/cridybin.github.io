@@ -188,5 +188,22 @@
             "pic": "./images/loading.png",
             "title": "loading"
         }
+    ],
+    "vue": [
+        {
+            "url": "http://cridybin.github.io/vue/dist/",
+            "pic": "./images/酷我音乐.png",
+            "title": "酷我音乐"
+        },
+        {
+            "url": "http://cridybin.github.io/vue/猫耳Fm/",
+            "pic": "./images/maoer.png",
+            "title": "猫耳FM"
+        },
+        {
+            "url": "https://gitee.com/cridyB/maoyan-ts-pinia",
+            "pic": "./images/maoyan.png",
+            "title": "猫眼电影"
+        }
     ]
 }
